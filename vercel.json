@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!assets/|favicon.ico|Logo.png).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

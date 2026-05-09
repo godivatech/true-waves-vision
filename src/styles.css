@@ -1,0 +1,233 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-ink: var(--ink);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cream: #F5F5F0;
+  --color-navy-dark: #060A18;
+
+  --shadow-elegant: 0 24px 60px -20px color-mix(in oklab, var(--ink) 25%, transparent);
+  --shadow-brand: 0 10px 40px -10px color-mix(in oklab, var(--accent) 40%, transparent);
+
+  --gradient-hero: linear-gradient(135deg, #0A1128 0%, #111C44 60%, #050A1A 100%);
+  --gradient-brand: linear-gradient(135deg, #3ABEF9 0%, #1DA1F2 100%);
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Premium Navy & Azure Palette */
+  --background: #FFFFFF;
+  --foreground: #0A1128;
+
+  --ink: #0A1128;
+
+  --card: #FFFFFF;
+  --card-foreground: #0A1128;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A1128;
+
+  /* Primary is now Navy */
+  --primary: #0A1128; 
+  --primary-foreground: #FFFFFF;
+
+  /* Accent & Secondary are Azure */
+  --secondary: #3ABEF9;
+  --secondary-foreground: #0A1128;
+  
+  --muted: #F8FAFC;
+  --muted-foreground: #64748B;
+  
+  --accent: #3ABEF9;
+  --accent-foreground: #0A1128;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #E2E8F0;
+  --input: #F1F5F9;
+  --ring: #3ABEF9;
+}
+
+.dark {
+  --background: #0A1128;
+  --foreground: #F8FAFC;
+  --card: #111C44;
+  --card-foreground: #F8FAFC;
+  --popover: #111C44;
+  --popover-foreground: #F8FAFC;
+  
+  --primary: #FFFFFF; /* High contrast white for primary in dark mode? Or Navy? Usually primary stays primary. */
+  --primary-foreground: #0A1128;
+  
+  --secondary: #3ABEF9;
+  --secondary-foreground: #0A1128;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --accent: #3ABEF9;
+  --accent-foreground: #0A1128;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #3ABEF9;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    font-family: "Inter", sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", sans-serif;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--accent) 30%, transparent);
+    border: 2px solid var(--background);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .text-balance { text-wrap: balance; }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-brand { background: var(--gradient-brand); }
+  .text-gradient-brand {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-brand { box-shadow: var(--shadow-brand); }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-accent text-primary font-bold rounded-full hover:opacity-90 transition-all active:scale-95;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-nav {
+    @apply bg-white/80 backdrop-blur-md border-b border-border shadow-sm;
+  }
+  .glass-dark {
+    @apply bg-[#0A1128]/40 backdrop-blur-md border border-white/5;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px -5px var(--accent);
+  }
+  .glow-accent-hover:hover {
+    box-shadow: 0 0 30px -2px var(--accent);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease-smooth), transform 0.9s var(--ease-smooth);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hover-lift {
+    transition: transform 0.5s var(--ease-smooth), box-shadow 0.5s var(--ease-smooth);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' /></filter><rect width='100%25' height='100%25' filter='url(%23n)' /></svg>");
+  }
+}
