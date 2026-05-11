@@ -5,6 +5,11 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "fra
 import { Reveal, Reveal3D } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import heroImg from "@/assets/hero.jpg";
+import sanjayImg from "@/assets/team/sanjay.png";
+import narasimhanImg from "@/assets/team/narashimhan.png";
+import chiranjeeviImg from "@/assets/team/chiranjeevi.png";
+import santhanamImg from "@/assets/team/santhanam.png";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -24,25 +29,29 @@ const leaders = [
     name: "S. Sanjay",
     role: "Managing Director | Founder",
     bio: "With over 18 years of experience, Mr. Sanjay is the driving force behind True Waves Group, having built the organization from its foundation into a diversified, multi-sector platform. Beginning his journey as an engineering professional, he combined technical expertise with strategic foresight to expand into real estate, valuation, infrastructure, and enterprise solutions—creating a cohesive ecosystem focused on long-term value creation. Known for his disciplined approach and deep industry insight, he leads with a clear philosophy: integrity as the foundation, performance as the outcome. His vision continues to shape the company’s growth, positioning it for sustained success across evolving markets.",
-    initials: "SS"
+    initials: "SS",
+    image: sanjayImg
   },
   {
     name: "Narasimhan",
     role: "Director – True Waves Realty",
     bio: "A seasoned civil engineer with over three decades of industry experience, Mr. Narasimhan has contributed to landmark projects across some of India’s most respected organizations, including TVS Group, DLF, RWD, and Chettinad Group. Known for his collaborative leadership style, he brings a balanced combination of technical expertise and strategic thinking. His ability to remain adaptable in evolving market conditions, while identifying high-potential opportunities, has been instrumental in driving expansion and strengthening the company’s real estate portfolio. With a mindset rooted in teamwork and a willingness to embrace new challenges, Mr. Narasimhan plays a key role in guiding the organization toward sustainable growth and long-term value creation.",
-    initials: "N"
+    initials: "N",
+    image: narasimhanImg
   },
   {
     name: "Chiranjeevi",
     role: "Director – True Valuators",
     bio: "With strong expertise in asset valuation, Mr. Chiranjeevi plays a pivotal role in delivering precise, compliant, and data-driven assessments across diverse asset classes. Backed by a foundation of professional standards and institutional affiliations, he ensures every valuation is conducted with accuracy, transparency, and rigorous document verification—aligning with globally recognized practices and regulatory frameworks. His approach integrates market intelligence, technical evaluation, and technology-enabled insights—enabling clients, financial institutions, and stakeholders to make informed decisions with confidence. Driven by a commitment to excellence and reliability, he contributes to building a valuation ecosystem where precision is not just expected, but consistently delivered.",
-    initials: "C"
+    initials: "C",
+    image: chiranjeeviImg
   },
   {
     name: "V. Santhanam",
     role: "Founder – True Waves Enterprise",
     bio: "A senior professional with a distinguished background in the Tamil Nadu Police Department, Mr. V. Santhanam brings extensive experience in security operations, investigation procedures, and administrative leadership. With a career rooted in discipline, vigilance, and structured execution, he plays a critical role in ensuring operational excellence across enterprise and security verticals. His expertise in handling complex environments, combined with a strong command over coordination and compliance, enables seamless execution of projects with precision and reliability. He is instrumental in upholding the company’s standards of professionalism, ensuring that every assignment is delivered with efficiency, accountability, and a commitment to client satisfaction.",
-    initials: "VS"
+    initials: "VS",
+    image: santhanamImg
   },
   {
     name: "J. Swarnalatha",
@@ -289,13 +298,17 @@ function LeadershipGrid() {
             0{i + 1}
           </div>
 
-          <motion.div layout="position" className="flex items-center gap-6 mb-8">
-            <div className="shrink-0 w-20 h-20 rounded-2xl bg-gradient-hero flex items-center justify-center font-display text-3xl text-white font-bold shadow-brand">
-              {l.initials}
+          <motion.div layout="position" className="flex flex-col sm:flex-row items-center sm:items-end gap-6 mb-10 text-center sm:text-left">
+            <div className="shrink-0 w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-3xl bg-gradient-hero flex items-center justify-center font-display text-4xl text-white font-bold shadow-brand overflow-hidden border-4 border-background ring-1 ring-border">
+              {l.image ? (
+                <img src={l.image} alt={l.name} className="w-full h-full object-cover" />
+              ) : (
+                l.initials
+              )}
             </div>
-            <div>
-              <div className="eyebrow text-accent mb-1 text-xs">{l.role}</div>
-              <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground leading-tight">{l.name}</h3>
+            <div className="pb-2">
+              <div className="eyebrow text-accent mb-2 text-xs lg:text-sm">{l.role}</div>
+              <h3 className="font-display text-2xl lg:text-4xl font-bold text-foreground leading-tight tracking-tight">{l.name}</h3>
             </div>
           </motion.div>
 
