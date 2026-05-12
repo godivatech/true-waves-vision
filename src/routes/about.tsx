@@ -2,7 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useState } from "react";
 import { Target, Compass, Heart, Shield, Sparkles, TrendingUp, Layers, Zap, Trophy, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
-import { Reveal, Reveal3D } from "@/components/site/Reveal";
+import { Reveal, Reveal3D, GSAPReveal } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import heroImg from "@/assets/hero.jpg";
 import sanjayImg from "@/assets/team/sanjay.png";
@@ -98,18 +98,18 @@ function About() {
           }}
           className="mx-auto section-container relative"
         >
-          <Reveal>
+          <GSAPReveal>
             <span className="eyebrow text-accent">Let's Tell You Who We Are</span>
             <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] text-balance font-semibold">
               If you’re here, you’re probably looking for the right place to <span className="text-gradient-brand">invest</span> <span className="text-gradient-brand">grow</span> or <span className="text-gradient-brand">partner</span>
             </h1>
-          </Reveal>
+          </GSAPReveal>
         </motion.div>
       </section>
 
       <section className="py-24 lg:py-32 bg-muted/20">
         <div className="mx-auto section-container grid md:grid-cols-3 gap-8 lg:gap-10">
-          <Reveal3D className="h-full">
+          <GSAPReveal className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
                 <Layers className="w-7 h-7 text-accent" />
@@ -138,9 +138,9 @@ function About() {
                 </p>
               </div>
             </div>
-          </Reveal3D>
+          </GSAPReveal>
 
-          <Reveal3D delay={100} className="h-full">
+          <GSAPReveal delay={100} className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
                 <Zap className="w-7 h-7 text-accent" />
@@ -160,9 +160,9 @@ function About() {
                 </div>
               </div>
             </div>
-          </Reveal3D>
+          </GSAPReveal>
 
-          <Reveal3D delay={200} className="h-full">
+          <GSAPReveal delay={200} className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
                 <Trophy className="w-7 h-7 text-accent" />
@@ -192,7 +192,7 @@ function About() {
                 <div className="font-display text-3xl font-black text-accent/20">18+ YEARS</div>
               </div>
             </div>
-          </Reveal3D>
+          </GSAPReveal>
         </div>
       </section>
 
@@ -263,9 +263,12 @@ function About() {
               Clear data, Straightforward conversations, Real results — Let’s talk.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="/contact" className="btn-primary">
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                className="btn-primary cursor-pointer"
+              >
                 Contact Us
-              </a>
+              </button>
               <a href="/pillars" className="inline-flex items-center gap-3 bg-card border border-border text-foreground px-8 py-3.5 rounded-full text-base font-medium hover:border-primary/50 transition-all duration-500">
                 Explore Our Pillars
               </a>

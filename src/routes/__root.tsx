@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { SmoothScroll } from "@/components/site/SmoothScroll";
 
 function NotFoundComponent() {
   return (
@@ -37,8 +38,7 @@ function ScrollToTop() {
 }
 
 function RootComponent() {
-  const { scrollYProgress } = useRouterState({ select: () => ({ scrollYProgress: 0 }) }); // Placeholder logic for router state if needed, but we can use motion directly
-  // Better yet, use framer-motion useScroll directly in the component
+  const { scrollYProgress } = useRouterState({ select: () => ({ scrollYProgress: 0 }) });
   const { scrollYProgress: motionScroll } = useScroll();
   const scaleX = useSpring(motionScroll, {
     stiffness: 100,
@@ -47,7 +47,7 @@ function RootComponent() {
   });
 
   return (
-    <>
+    <SmoothScroll>
       <ScrollToTop />
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-[60]"
@@ -58,6 +58,6 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </SmoothScroll>
   );
 }

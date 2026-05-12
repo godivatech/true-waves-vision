@@ -7,7 +7,7 @@ import projectsImg from "@/assets/projects.jpg";
 import mapImg from "@/assets/map.png";
 import investImg from "@/assets/1.png";
 import partnerImg from "@/assets/2.png";
-import { Reveal, Reveal3D, Counter } from "@/components/site/Reveal";
+import { Reveal, Reveal3D, Counter, GSAPReveal, GSAPCounter } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import { pillars } from "@/data/pillars";
 import realtyBg from "@/assets/realty_bg.png";
@@ -43,7 +43,7 @@ function InteractivePillarsSection() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-accent/20 blur-[120px] rounded-full opacity-50 pointer-events-none" />
 
       <div className="mx-auto section-container relative z-10">
-        <Reveal>
+        <GSAPReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <div>
               <span className="eyebrow text-accent/80">Our Five Pillars</span>
@@ -55,7 +55,7 @@ function InteractivePillarsSection() {
               A unified ecosystem designed to seamlessly manage every aspect of your real estate, valuation, and enterprise needs.
             </p>
           </div>
-        </Reveal>
+        </GSAPReveal>
 
         <div className="flex flex-col lg:flex-row w-full h-[600px] lg:h-[450px] gap-3 lg:gap-4 overflow-hidden relative">
           {pillars.map((p, index) => {
@@ -223,17 +223,20 @@ function Home() {
               valuation, and enterprise development. Built for growth.
             </p>
           </Reveal>
-          <Reveal delay={450}>
+          <GSAPReveal delay={450}>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/pillars" className="group btn-primary text-base tracking-wide shadow-brand hover:shadow-elegant">
                 Explore Our Group
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/contact" className="inline-flex items-center gap-3 border border-primary-foreground/30 px-7 py-4 rounded-full text-base tracking-wide hover:bg-primary-foreground hover:text-accent transition-all duration-500">
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                className="inline-flex items-center gap-3 border border-primary-foreground/30 px-7 py-4 rounded-full text-base tracking-wide hover:bg-primary-foreground hover:text-accent transition-all duration-500 cursor-pointer"
+              >
                 Partner With Us
-              </Link>
+              </button>
             </div>
-          </Reveal>
+          </GSAPReveal>
 
           <div className="mt-20 hidden md:flex items-end gap-16 opacity-80">
             <div><div className="font-display text-3xl font-semibold">05</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Pillars</div></div>
@@ -255,12 +258,12 @@ function Home() {
             { n: 50, s: "+", l: "Strategic Partners" },
             { n: 5, s: "", l: "Business Pillars" },
           ].map((m, i) => (
-            <Reveal3D key={i} delay={i * 100} className="bg-background p-10">
+            <GSAPReveal key={i} delay={i * 100} className="bg-background p-10">
               <div className="font-display text-5xl md:text-6xl text-foreground font-semibold">
-                <Counter to={m.n} suffix={m.s} />
+                <GSAPCounter to={m.n} suffix={m.s} />
               </div>
               <div className="mt-3 text-base text-muted-foreground tracking-wide">{m.l}</div>
-            </Reveal3D>
+            </GSAPReveal>
           ))}
         </div>
       </Section>
@@ -305,9 +308,12 @@ function Home() {
                   The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
                 </p>
                 <div className="flex flex-wrap gap-8 items-center">
-                    <Link to="/contact" className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-navy-dark hover:text-white transition-all duration-500 rounded-full">
+                    <button 
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                      className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-navy-dark hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+                    >
                       Talk to an Expert
-                    </Link>
+                    </button>
                   <Link to="/pillars" className="group flex items-center gap-2 text-white font-semibold border-b border-white/40 pb-1 hover:border-white transition-all">
                     Explore Opportunities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>

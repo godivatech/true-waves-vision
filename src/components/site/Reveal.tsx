@@ -1,5 +1,12 @@
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface RevealProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
@@ -121,6 +128,83 @@ export function Counter({ to, suffix = "", duration = 2000 }: { to: number; suff
     >
       {val}{suffix}
     </motion.span>
+  );
+}
+
+export function GSAPReveal({
+  children,
+  delay = 0,
+  direction = "up",
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right";
+  className?: string;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const xMove = direction === "left" ? 60 : direction === "right" ? -60 : 0;
+    const yMove = direction === "up" ? 60 : direction === "down" ? -60 : 0;
+
+    gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        x: xMove,
+        y: yMove,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 1.2,
+        delay: delay / 1000,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, { scope: containerRef });
+
+  return (
+    <div ref={containerRef} className={className} style={{ opacity: 0 }}>
+      {children}
+    </div>
+  );
+}
+
+export function GSAPCounter({ to, suffix = "", duration = 2 }: { to: number; suffix?: string; duration?: number }) {
+  const [val, setVal] = useState(0);
+  const containerRef = useRef<HTMLSpanElement>(null);
+
+  useGSAP(() => {
+    const obj = { value: 0 };
+    gsap.to(obj, {
+      value: to,
+      duration: duration,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 90%",
+      },
+      onUpdate: () => {
+        setVal(Math.floor(obj.value));
+      },
+    });
+  }, { scope: containerRef });
+
+  return (
+    <span ref={containerRef}>
+      {val}{suffix}
+    </span>
   );
 }
 
