@@ -263,7 +263,7 @@ function About() {
               Clear data, Straightforward conversations, Real results — Let’s talk.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <button 
+              <button
                 onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
                 className="btn-primary cursor-pointer"
               >
