@@ -2,7 +2,7 @@ import { Outlet, Link, createRootRoute, useRouterState } from "@tanstack/react-r
 import { useEffect } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
 
 function NotFoundComponent() {
@@ -38,21 +38,9 @@ function ScrollToTop() {
 }
 
 function RootComponent() {
-  const { scrollYProgress } = useRouterState({ select: () => ({ scrollYProgress: 0 }) });
-  const { scrollYProgress: motionScroll } = useScroll();
-  const scaleX = useSpring(motionScroll, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   return (
     <SmoothScroll>
       <ScrollToTop />
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-accent origin-left z-[60]"
-        style={{ scaleX }}
-      />
       <Nav />
       <main className="min-h-screen">
         <Outlet />
