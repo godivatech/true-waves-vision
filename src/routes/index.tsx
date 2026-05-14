@@ -296,13 +296,13 @@ function Home() {
       <section className="relative py-32 lg:py-48 bg-accent text-accent-foreground overflow-hidden">
         <div className="mx-auto section-container relative z-10">
           {/* Section Hero: Editorial Split */}
-          <div className="grid lg:grid-cols-[1fr_1fr] gap-16 lg:gap-32 items-center mb-32">
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-32 items-center mb-32">
             <Reveal>
-              <div className="max-w-xl">
+              <div className="max-w-2xl">
                 <span className="eyebrow text-white/70 mb-6 block">Investment Intelligence</span>
-                <h2 className="font-display text-5xl md:text-7xl leading-[1.05] font-semibold text-white mb-10">
-                  Smart Investments.<br />
-                  Secure Growth.
+                <h2 className="font-display text-5xl md:text-7xl leading-[1.1] font-semibold text-white mb-10">
+                  <span className="block whitespace-nowrap">Smart Investments</span>
+                  <span className="block whitespace-nowrap">Secure Growth</span>
                 </h2>
                 <p className="text-xl leading-relaxed text-white mb-12">
                   The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
