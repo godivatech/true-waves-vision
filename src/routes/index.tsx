@@ -136,9 +136,9 @@ function InteractivePillarsSection() {
                       {p.description}
                     </p>
                     {p.externalLink ? (
-                      <a 
-                        href={p.externalLink} 
-                        target="_blank" 
+                      <a
+                        href={p.externalLink}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-foreground transition-colors"
                       >
@@ -163,13 +163,13 @@ function InteractivePillarsSection() {
 
 function Home() {
   const { scrollYProgress } = useScroll();
-  
+
   // Hero Parallax & 3D Effects
   const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
   const heroTranslateZ = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
   const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.8]);
-  
+
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const smoothRotateX = useSpring(heroRotateX, springConfig);
   const smoothTranslateZ = useSpring(heroTranslateZ, springConfig);
@@ -180,7 +180,7 @@ function Home() {
       <Floating3DBackground />
       {/* HERO */}
       <section className="relative min-h-screen flex items-end overflow-hidden bg-gradient-hero text-primary-foreground grain">
-        <motion.div 
+        <motion.div
           style={{ opacity: heroOpacity }}
           className="absolute inset-0"
         >
@@ -195,8 +195,8 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A1128]/80 via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div 
-          style={{ 
+        <motion.div
+          style={{
             rotateX: smoothRotateX,
             translateZ: smoothTranslateZ,
             scale: smoothScale,
@@ -219,7 +219,7 @@ function Home() {
           </Reveal>
           <Reveal delay={300}>
             <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed text-balance">
-              South India's premier multi-sector group delivering excellence across real estate, 
+              South India's premier multi-sector group delivering excellence across real estate,
               valuation, and enterprise development. Built for growth.
             </p>
           </Reveal>
@@ -229,7 +229,7 @@ function Home() {
                 Explore Our Group
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button 
+              <button
                 onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
                 className="inline-flex items-center gap-3 border border-primary-foreground/30 px-7 py-4 rounded-full text-base tracking-wide hover:bg-primary-foreground hover:text-accent transition-all duration-500 cursor-pointer"
               >
@@ -308,12 +308,12 @@ function Home() {
                   The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
                 </p>
                 <div className="flex flex-wrap gap-8 items-center">
-                    <button 
-                      onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
-                      className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-navy-dark hover:text-white transition-all duration-500 rounded-full cursor-pointer"
-                    >
-                      Talk to an Expert
-                    </button>
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                    className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-navy-dark hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+                  >
+                    Talk to an Expert
+                  </button>
                   <Link to="/pillars" className="group flex items-center gap-2 text-white font-semibold border-b border-white/40 pb-1 hover:border-white transition-all">
                     Explore Opportunities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -326,9 +326,9 @@ function Home() {
               <div className="relative aspect-square flex items-center justify-center p-12 lg:p-20">
                 <div className="absolute inset-0 bg-white/5 rounded-full blur-3xl" />
                 <div className="absolute inset-0 border border-white/20 rounded-full" />
-                <motion.img 
-                  src={investImg} 
-                  alt="Investment Growth Visualization" 
+                <motion.img
+                  src={investImg}
+                  alt="Investment Growth Visualization"
                   className="relative w-full h-full object-contain drop-shadow-2xl z-10 animate-float"
                 />
               </div>
@@ -363,26 +363,26 @@ function Home() {
         </p>
         <div className="grid md:grid-cols-2 gap-8">
           {[
-            { 
-              t: "Residential", 
+            {
+              t: "Residential",
               d: "Modern living spaces designed for comfort, aesthetics, and long-term appreciation, catering to evolving lifestyle needs. Premium locations. Thoughtful architecture. Future-ready communities.",
               p: ["TVS Emerald Peninsula", "Indus Luxury Apartments", "RITZ Residences", "Alagar Homes"],
               img: projectsImg
             },
-            { 
-              t: "Commercial", 
+            {
+              t: "Commercial",
               d: "Strategically located developments offering high visibility, strong footfall, and sustainable rental yield potential. Designed to power businesses and maximize investment returns.",
               p: ["RSM Tower (Trichy)", "Lotus Shopping Centre (Madurai)", "Velraj Commercial Complex (Madurai)"],
               img: projectsImg
             },
-            { 
-              t: "Infrastructure", 
+            {
+              t: "Infrastructure",
               d: "Execution of large-scale infrastructure projects that contribute to industrial growth and national development. Driven by engineering excellence, compliance, and timely delivery.",
               p: ["Chennai Metro Rail (Teynampet)", "L&T Kudankulam", "Kellogg’s Sri City"],
               img: projectsImg
             },
-            { 
-              t: "Institutional / Hospital / Industrial", 
+            {
+              t: "Institutional / Hospital / Industrial",
               d: "Reliable execution of projects across education and healthcare sectors, ensuring quality, durability, and scalability. Building spaces that serve communities and future generations.",
               p: ["MGR University", "Thiagarajar College", "Govt. Hospital, Melur"],
               img: projectsImg
@@ -451,15 +451,15 @@ function Home() {
       <section className="py-32 lg:py-48 bg-ink text-primary-foreground relative overflow-hidden grain">
         <div className="mx-auto section-container relative z-10">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 lg:gap-32 items-center">
-            
+
             {/* Visual Frame */}
             <Reveal>
               <div className="relative group">
                 <div className="absolute -inset-10 bg-accent/10 blur-[100px] rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
                 <div className="relative aspect-[4/5] bg-white/[0.02] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                  <motion.img 
-                    src={partnerImg} 
-                    alt="Strategic Partnership" 
+                  <motion.img
+                    src={partnerImg}
+                    alt="Strategic Partnership"
                     className="w-full h-full object-cover grayscale brightness-125 opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000"
                     style={{ objectPosition: 'center 20%' }}
                   />
@@ -483,7 +483,7 @@ function Home() {
                 <p className="text-xl leading-relaxed opacity-70 mb-12 max-w-xl">
                   Whether you’re entering the market or scaling your presence, True Waves Group offers structured, high-value collaborations built on shared momentum and absolute transparency.
                 </p>
-                
+
                 <div className="space-y-12 mb-16">
                   {[
                     { t: "Landowners", d: "Transform land into high-value developments or revenue-generating assets." },
@@ -507,7 +507,7 @@ function Home() {
               </Reveal>
             </div>
           </div>
-          
+
           <div className="mt-32 text-center">
             <div className="inline-block px-10 py-5 border border-white/10 rounded-full backdrop-blur-sm text-base opacity-40 italic">
               "Growth is better when it’s built together. Let’s create long-term value, not just transactions."
