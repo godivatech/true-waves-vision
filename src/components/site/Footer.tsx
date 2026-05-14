@@ -8,12 +8,14 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground mt-32">
       <div className="mx-auto section-container py-20 grid gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <div className="flex items-center mb-6">
-            <img
-              src={logoImg}
-              alt="True Waves Group"
-              className="h-32 w-auto object-contain object-left"
-            />
+          <div className="flex items-center mb-8">
+            <div className="bg-white p-3 rounded-2xl shadow-xl inline-flex items-center justify-center">
+              <img
+                src={logoImg}
+                alt="True Waves Group"
+                className="h-16 lg:h-20 w-auto object-contain"
+              />
+            </div>
           </div>
           <p className="text-base opacity-70 leading-relaxed max-w-xs">
             Transforming industries into investment opportunities across India.
