@@ -74,7 +74,7 @@ function InteractivePillarsSection() {
                 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10"
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: "preserve-3d", willChange: "flex, transform" }}
               >
                 {/* Background Image */}
                 <div
@@ -410,11 +410,7 @@ function Home() {
             </Reveal3D>
           ))}
         </div>
-        <div className="mt-16 text-center">
-          <Link to="/contact" className="btn-primary text-lg">
-            View Full Project Portfolio <ArrowRight className="w-5 h-5" />
-          </Link>
-        </div>
+
       </Section>
 
       {/* PRESENCE */}

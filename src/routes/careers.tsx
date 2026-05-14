@@ -173,10 +173,11 @@ function Careers() {
                 <Field label="Email" name="email" type="email" required />
               </div>
               <Field label="Position Applying For" name="position" required />
-              <div>
+              {/* Temporarily commented outed */}
+              {/* <div>
                 <label className="eyebrow block mb-2">Resume</label>
                 <input type="file" name="resume" accept=".pdf,.doc,.docx" className="block w-full text-base file:mr-4 file:py-3 file:px-5 file:rounded-sm file:border-0 file:bg-accent file:text-accent-foreground file:cursor-pointer hover:file:bg-ink hover:file:text-white transition" required />
-              </div>
+              </div> */}
                 <button type="submit" className="mt-4 inline-flex items-center justify-center gap-3 bg-gradient-brand text-ink px-8 py-4 rounded-sm text-base font-medium shadow-brand hover:shadow-elegant transition-all duration-500">
                   Submit Application <ArrowRight className="w-4 h-4" />
                 </button>

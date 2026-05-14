@@ -48,6 +48,7 @@ export function Reveal({
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       className={`${fullWidth ? "w-full" : ""} ${className}`}
+      style={{ willChange: "transform, opacity" }}
       {...props}
     >
       {children}
@@ -89,6 +90,7 @@ export function Reveal3D({
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         className={className.includes('h-full') ? 'h-full' : ''}
+        style={{ willChange: "transform, opacity" }}
         {...props}
       >
         {children}
@@ -175,7 +177,7 @@ export function GSAPReveal({
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className={className} style={{ opacity: 0 }}>
+    <div ref={containerRef} className={className} style={{ opacity: 0, willChange: "transform, opacity" }}>
       {children}
     </div>
   );
