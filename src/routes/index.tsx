@@ -445,7 +445,7 @@ function Home() {
       </Section>
 
       {/* PRESENCE */}
-      <section className="pt-24 lg:pt-32 pb-24 lg:pb-32 bg-muted/30">
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-48 bg-muted/30">
         <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <Reveal>
             <span className="eyebrow text-accent">Our Presence & Visibility</span>
@@ -471,7 +471,7 @@ function Home() {
             </div>
           </Reveal>
           <Reveal delay={150}>
-            <div className="relative flex items-center justify-center">
+            <div className="relative flex items-center justify-center lg:translate-y-12">
               <img src={mapImg} alt="India presence map" className="w-full h-auto max-w-2xl" loading="lazy" />
             </div>
           </Reveal>
