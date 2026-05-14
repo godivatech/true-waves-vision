@@ -302,66 +302,87 @@ function Home() {
         </div>
       </Section>
 
-      {/* WHY INVEST */}
-      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-accent text-accent-foreground overflow-hidden">
-        <div className="mx-auto section-container relative z-10">
-          {/* Section Hero: Editorial Split */}
-          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-32 items-center mb-32">
-            <Reveal>
-              <div className="max-w-2xl">
-                <span className="eyebrow text-white/70 mb-6 block">Investment Intelligence</span>
-                <h2 className="font-display text-5xl md:text-7xl leading-[1.1] font-semibold text-white mb-10">
-                  <span className="block whitespace-nowrap">Smart Investments</span>
-                  <span className="block whitespace-nowrap">Secure Growth</span>
-                </h2>
-                <p className="text-xl leading-relaxed text-white mb-12">
-                  The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
-                </p>
-                <div className="flex flex-wrap gap-8 items-center">
-                  <button
-                    onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
-                    className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-navy-dark hover:text-white transition-all duration-500 rounded-full cursor-pointer"
-                  >
-                    Talk to an Expert
-                  </button>
-                  <Link to="/pillars" className="group flex items-center gap-2 text-white font-semibold border-b border-white/40 pb-1 hover:border-white transition-all">
-                    Explore Opportunities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
+      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-ink text-primary-foreground overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] bg-accent/10 blur-[140px] rounded-full pointer-events-none" />
 
-            {/* The Centerpiece Image */}
-            <Reveal delay={200}>
-              <div className="relative aspect-square flex items-center justify-center p-12 lg:p-20">
-                <div className="absolute inset-0 bg-white/5 rounded-full blur-3xl" />
-                <div className="absolute inset-0 border border-white/20 rounded-full" />
-                <motion.img
-                  src={investImg}
-                  alt="Investment Growth Visualization"
-                  className="relative w-full h-full object-contain drop-shadow-2xl z-10 animate-float"
-                />
-              </div>
+        <div className="mx-auto section-container relative z-10">
+          <div className="text-center mb-24 lg:mb-32">
+            <Reveal>
+              <span className="eyebrow text-accent/80 mb-6 block">Investment Intelligence</span>
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-10 text-balance">
+                Smart Investments<br />
+                <span className="text-gradient-brand italic">Secure Growth</span>
+              </h2>
+              <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed text-balance">
+                The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
+              </p>
             </Reveal>
           </div>
 
-          {/* Editorial Grid: Detailed Points */}
-          <div className="grid md:grid-cols-3 gap-x-12 gap-y-16 border-t border-white/30 pt-16">
-            {[
-              { k: "01", t: "Diversified Opportunities", d: "Access real estate, technology, and enterprise sectors — all under one trusted group." },
-              { k: "02", t: "Lower Risk, Higher Stability", d: "Multi-sector model reduces dependency on a single market, giving you balanced growth." },
-              { k: "03", t: "50+ Proven Projects", d: "A strong portfolio across residential, commercial, and infrastructure developments." },
-              { k: "04", t: "Direct Expert Access", d: "Speak directly with professionals — no middle layers, no automated responses." },
-              { k: "05", t: "Wealth Partnership", d: "We don’t just complete projects — we build trusted partnerships that grow with you." },
-            ].map((b, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="group">
-                  <div className="font-display text-4xl text-white/40 font-bold mb-6 group-hover:text-white/60 transition-colors">{b.k}</div>
-                  <h3 className="font-display text-2xl mb-4 font-semibold text-white">{b.t}</h3>
-                  <p className="text-lg text-white/80 leading-relaxed">{b.d}</p>
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            {/* The Visual Piece */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <Reveal delay={200}>
+                <div className="relative aspect-square flex items-center justify-center">
+                  <div className="absolute inset-0 bg-accent/5 rounded-full blur-[100px] animate-pulse" />
+                  <div className="absolute inset-4 border border-white/5 rounded-full" />
+                  <div className="absolute inset-12 border border-white/10 rounded-full" />
+                  <motion.img
+                    src={investImg}
+                    alt="Investment Growth"
+                    className="relative w-4/5 h-4/5 object-contain z-10 drop-shadow-[0_0_50px_rgba(3,169,244,0.2)]"
+                    animate={{ 
+                      y: [0, -20, 0],
+                      rotate: [0, 2, 0]
+                    }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                  />
                 </div>
               </Reveal>
-            ))}
+            </div>
+
+            {/* Strategic Value Grid */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <div className="grid sm:grid-cols-2 gap-4 lg:gap-6">
+                {[
+                  { t: "Diversified Opportunities", d: "Access real estate, technology, and enterprise sectors under one trusted group." },
+                  { t: "Lower Risk Stability", d: "Multi-sector model reduces dependency on a single market for balanced growth." },
+                  { t: "50+ Proven Projects", d: "A strong portfolio across residential, commercial, and infrastructure." },
+                  { t: "Direct Expert Access", d: "Speak directly with professionals — no middle layers or automated responses." },
+                ].map((item, i) => (
+                  <Reveal key={i} delay={i * 100}>
+                    <div className="h-full p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] hover:border-accent/40 transition-all duration-500 group">
+                      <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500">
+                        <span className="text-xs font-bold">0{i+1}</span>
+                      </div>
+                      <h3 className="font-display text-xl font-bold text-white mb-3">{item.t}</h3>
+                      <p className="text-sm text-primary-foreground/50 leading-relaxed group-hover:text-primary-foreground/70 transition-colors">
+                        {item.d}
+                      </p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+
+              <Reveal delay={400}>
+                <div className="mt-12 flex flex-wrap gap-6 items-center">
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                    className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-accent hover:text-white transition-all duration-500 rounded-full shadow-lg shadow-white/5"
+                  >
+                    Talk to an Expert
+                  </button>
+                  <Link to="/pillars" className="group flex items-center gap-2 text-white/60 font-semibold hover:text-white transition-all">
+                    View Opportunities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -465,7 +486,7 @@ function Home() {
           <div className="text-center mb-20 lg:mb-28">
             <Reveal>
               <span className="eyebrow text-accent/80 mb-6 block">Strategic Collaboration</span>
-              <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1] tracking-tighter mb-8 text-balance">
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 text-balance">
                 One Ecosystem<br />
                 <span className="text-gradient-brand italic">Multiple Paths</span>
               </h2>
