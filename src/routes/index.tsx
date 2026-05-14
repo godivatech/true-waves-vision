@@ -465,7 +465,7 @@ function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
                   <div className="absolute bottom-10 left-10 right-10">
-                    <div className="font-display text-3xl font-bold mb-2">Build Together.</div>
+                    <div className="font-display text-3xl font-bold mb-2">Build Together</div>
                     <p className="text-sm opacity-50 max-w-xs">Creating enduring value through structured, high-yield collaboration.</p>
                   </div>
                 </div>
@@ -477,8 +477,8 @@ function Home() {
               <Reveal>
                 <span className="eyebrow text-accent mb-6 block">Strategic Collaboration</span>
                 <h2 className="font-display text-5xl md:text-7xl leading-[1.05] font-semibold mb-10">
-                  One Ecosystem.<br />
-                  <span className="text-gradient-brand">Multiple Paths.</span>
+                  One Ecosystem<br />
+                  <span className="text-gradient-brand">Multiple Paths</span>
                 </h2>
                 <p className="text-xl leading-relaxed opacity-70 mb-12 max-w-xl">
                   Whether you’re entering the market or scaling your presence, True Waves Group offers structured, high-value collaborations built on shared momentum and absolute transparency.
