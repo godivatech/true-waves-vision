@@ -112,9 +112,12 @@ function Pillars() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                       >
                         <span className="eyebrow text-accent mb-6 block tracking-[0.2em]">{p.tagline}</span>
-                        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.9] font-bold text-white mb-8">
-                          {p.name.split(' ').map((word, idx) => (
-                            <span key={idx} className={idx > 1 ? "text-accent" : ""}>{word}<br className="hidden lg:block" /></span>
+                        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-bold text-white mb-8">
+                          {p.name.split(' ').map((word, idx, arr) => (
+                            <span key={idx} className={idx > 1 ? "text-accent" : ""}>
+                              {word}
+                              {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
+                            </span>
                           ))}
                         </h2>
                         <p className="text-xl text-white/60 leading-relaxed mb-12 max-w-lg">
