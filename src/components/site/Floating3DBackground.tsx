@@ -10,7 +10,8 @@ export function Floating3DBackground() {
           rotate: [0, 10, 0]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] bg-accent/5 blur-[120px] rounded-full" 
+        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] rounded-full"
+        style={{ background: 'radial-gradient(circle at center, rgba(58,190,249,0.05) 0%, transparent 70%)' }}
       />
       <motion.div 
         animate={{ 
@@ -19,7 +20,8 @@ export function Floating3DBackground() {
           rotate: [0, -15, 0]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] bg-accent/5 blur-[120px] rounded-full" 
+        className="absolute bottom-[10%] right-[5%] w-[35vw] h-[35vw] rounded-full"
+        style={{ background: 'radial-gradient(circle at center, rgba(58,190,249,0.05) 0%, transparent 70%)' }}
       />
     </div>
   );
