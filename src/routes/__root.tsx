@@ -4,6 +4,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { motion } from "framer-motion";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
+import { useLenis } from "lenis/react";
 
 function NotFoundComponent() {
   return (
@@ -31,9 +32,16 @@ export const Route = createRootRoute({
 
 function ScrollToTop() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lenis = useLenis();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [pathname]);
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, lenis]);
+
   return null;
 }
 

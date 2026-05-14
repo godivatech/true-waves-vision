@@ -186,7 +186,7 @@ function Pillars() {
       </div>
 
       {/* Final Transition CTA */}
-      <section className="relative py-40 lg:py-64 bg-ink text-white text-center overflow-hidden border-t border-white/5">
+      <section className="relative pt-32 lg:pt-48 pb-32 lg:pb-48 bg-ink text-white text-center overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-accent/20 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2" />
         </div>

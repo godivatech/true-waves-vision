@@ -47,9 +47,9 @@ function Careers() {
   const smoothScale = useSpring(heroScale, springConfig);
 
   return (
-    <div style={{ perspective: "1500px" }}>
+    <>
       <Floating3DBackground />
-      <section className="relative pt-40 pb-16 bg-gradient-hero text-primary-foreground overflow-hidden grain">
+      <section className="relative pt-40 pb-16 bg-gradient-hero text-primary-foreground overflow-hidden grain" style={{ perspective: "1500px" }}>
         <motion.div 
           style={{ 
             rotateX: smoothRotateX,
@@ -195,7 +195,7 @@ function Careers() {
           )}
         </div>
       </section>
-    </div>
+    </>
   );
 }
 

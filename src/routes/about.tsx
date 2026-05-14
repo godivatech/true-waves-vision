@@ -83,9 +83,9 @@ function About() {
   const smoothScale = useSpring(heroScale, springConfig);
 
   return (
-    <div style={{ perspective: "1500px" }}>
+    <>
       <Floating3DBackground />
-      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain">
+      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain" style={{ perspective: "1500px" }}>
         <div className="absolute inset-0 opacity-30">
           <img src={heroImg} alt="" className="w-full h-full object-cover" width={1920} height={1280} />
         </div>
@@ -276,7 +276,7 @@ function About() {
           </Reveal3D>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 

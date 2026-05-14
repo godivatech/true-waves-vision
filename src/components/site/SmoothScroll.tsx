@@ -18,17 +18,12 @@ interface SmoothScrollProps {
 export function SmoothScroll({ children }: SmoothScrollProps) {
   const lenisRef = useRef<any>(null);
 
+  // ReactLenis root handles the RAF loop automatically.
+  // We only need to register ScrollTrigger once.
   useEffect(() => {
-    function update(time: number) {
-      lenisRef.current?.lenis?.raf(time * 1000);
-    }
-
-    gsap.ticker.add(update);
-
-    return () => {
-      gsap.ticker.remove(update);
-    };
+    ScrollTrigger.refresh();
   }, []);
+
 
   return (
     <ReactLenis

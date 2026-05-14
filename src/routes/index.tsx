@@ -176,10 +176,10 @@ function Home() {
   const smoothScale = useSpring(heroScale, springConfig);
 
   return (
-    <div style={{ perspective: "1500px" }}>
+    <>
       <Floating3DBackground />
       {/* HERO */}
-      <section className="relative min-h-screen flex items-end overflow-hidden bg-gradient-hero text-primary-foreground grain">
+      <section className="relative min-h-screen flex items-end overflow-hidden bg-gradient-hero text-primary-foreground grain" style={{ perspective: "1500px" }}>
         <motion.div
           style={{ opacity: heroOpacity }}
           className="absolute inset-0"
@@ -525,7 +525,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
 
