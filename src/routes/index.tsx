@@ -272,7 +272,16 @@ function Home() {
       <InteractivePillarsSection />
 
       {/* WHY CHOOSE US */}
-      <Section eyebrow="Why Choose True Waves Group" title={<>Built for Trust. Driven by Data.<br />Designed for Growth.</>}>
+      <Section 
+        eyebrow="Why Choose True Waves Group" 
+        title={
+          <>
+            <span className="opacity-40">Built for Trust</span><br />
+            <span className="opacity-70">Driven by Data</span><br />
+            <span>Designed for Growth</span>
+          </>
+        }
+      >
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
           {[
             { icon: Sparkles, t: "One Powerful Ecosystem", d: "Five specialized verticals — real estate, valuation, enterprise, scaffolding & partnerships — working seamlessly to maximize your outcomes." },
@@ -282,6 +291,7 @@ function Home() {
             { icon: Users, t: "Leadership That Delivers", d: "A highly experienced leadership team with proven expertise across multiple industries." },
             { icon: Handshake, t: "Trusted by 50+ Partners", d: "A growing network of investors, developers, and institutions who consistently choose us." },
             { icon: TrendingUp, t: "Measurable Results", d: "In a market full of promises, we deliver results you can see and track." },
+            { icon: Compass, t: "Tailored Investment Strategies", d: "We don't believe in one-size-fits-all. Every partnership is customized to align with your unique financial goals and risk appetite." },
           ].map((f, i) => (
             <Reveal3D key={i} delay={i * 80} className="bg-background p-10 group hover:bg-muted/40 transition-colors duration-500">
               <f.icon className="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform duration-500" />
