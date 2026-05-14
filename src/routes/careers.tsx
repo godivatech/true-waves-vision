@@ -72,7 +72,7 @@ function Careers() {
         </motion.div>
       </section>
 
-      <section className="py-24 lg:py-32">
+      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <span className="eyebrow text-accent">What It's Like To Work Here</span>
@@ -90,7 +90,7 @@ function Careers() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-muted/20">
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <Reveal>
@@ -121,7 +121,7 @@ function Careers() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-muted/30">
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <span className="eyebrow text-accent">Current Openings</span>
@@ -147,7 +147,7 @@ function Careers() {
         </div>
       </section>
 
-      <section id="apply" className="py-24 lg:py-32">
+      <section id="apply" className="pt-12 lg:pt-16 pb-24 lg:pb-32">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal>
             <span className="eyebrow text-accent">Apply Now</span>
