@@ -107,7 +107,7 @@ function About() {
         </motion.div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-muted/20">
+      <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-muted/20">
         <div className="mx-auto section-container grid md:grid-cols-3 gap-8 lg:gap-10">
           <GSAPReveal className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
@@ -196,7 +196,7 @@ function About() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20">
         <div className="mx-auto section-container grid md:grid-cols-2 gap-12">
           <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full">
             <Target className="w-8 h-8 text-accent mb-6" />
@@ -221,7 +221,7 @@ function About() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-muted/30">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/30">
         <div className="mx-auto section-container">
           <Reveal>
             <span className="eyebrow text-accent">Our Core Values</span>
@@ -239,7 +239,7 @@ function About() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-40 bg-muted/10">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-muted/10">
         <div className="mx-auto section-container">
           <Reveal>
             <span className="eyebrow text-accent">Leadership</span>
@@ -252,7 +252,7 @@ function About() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-muted/20">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-muted/20">
         <div className="mx-auto max-w-4xl section-container text-center">
           <Reveal3D>
             <span className="eyebrow text-accent">Before you move forward</span>

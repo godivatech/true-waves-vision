@@ -55,7 +55,7 @@ function Contact() {
         </motion.div>
       </section>
 
-      <section className="py-24 lg:py-32">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32">
         <div className="mx-auto section-container grid lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2 space-y-8">
             <Reveal>

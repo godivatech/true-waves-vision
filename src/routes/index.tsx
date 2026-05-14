@@ -39,7 +39,7 @@ function InteractivePillarsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-24 lg:py-32 bg-ink text-primary-foreground relative overflow-hidden">
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-ink text-primary-foreground relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-accent/20 blur-[120px] rounded-full opacity-50 pointer-events-none" />
 
       <div className="mx-auto section-container relative z-10">
@@ -303,7 +303,7 @@ function Home() {
       </Section>
 
       {/* WHY INVEST */}
-      <section className="relative py-32 lg:py-48 bg-accent text-accent-foreground overflow-hidden">
+      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-accent text-accent-foreground overflow-hidden">
         <div className="mx-auto section-container relative z-10">
           {/* Section Hero: Editorial Split */}
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-32 items-center mb-32">
@@ -424,7 +424,7 @@ function Home() {
       </Section>
 
       {/* PRESENCE */}
-      <section className="py-28 lg:py-40 bg-muted/30">
+      <section className="pt-24 lg:pt-32 pb-24 lg:pb-32 bg-muted/30">
         <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <Reveal>
             <span className="eyebrow text-accent">Our Presence & Visibility</span>
@@ -458,7 +458,7 @@ function Home() {
       </section>
 
       {/* PARTNER CTA */}
-      <section className="py-32 lg:py-48 bg-ink text-primary-foreground relative overflow-hidden grain">
+      <section className="pt-24 lg:pt-32 pb-32 lg:pb-40 bg-ink text-primary-foreground relative overflow-hidden grain">
         <div className="mx-auto section-container relative z-10">
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-20 lg:gap-32 items-center">
 
@@ -531,7 +531,7 @@ function Home() {
 
 function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20">
       <div className="mx-auto section-container">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
