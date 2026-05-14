@@ -89,13 +89,13 @@ function Contact() {
                 href="https://wa.me/919840000000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between gap-4 p-6 rounded-full bg-gradient-brand text-ink shadow-brand hover:shadow-elegant transition-all duration-500 group"
+                className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-gradient-brand text-ink shadow-brand hover:shadow-elegant transition-all duration-500 group"
               >
                 <div className="flex items-center gap-4">
                   <MessageCircle className="w-6 h-6" />
                   <div>
-                    <div className="font-display text-lg">Working Hours</div>
-                    <div className="text-sm opacity-80">Monday – Saturday | 9:30 AM – 6:30 PM</div>
+                    <div className="font-display text-lg">Quick Contact</div>
+                    <div className="text-sm opacity-80">WhatsApp for faster response</div>
                   </div>
                 </div>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -103,23 +103,29 @@ function Contact() {
             </Reveal>
 
             <Reveal delay={300}>
-              <div className="aspect-video rounded-3xl overflow-hidden border border-border">
-                <iframe
-                  title="True Waves Group office location"
-                  src="https://www.google.com/maps?q=Chennai,India&output=embed"
-                  className="w-full h-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+              <div className="p-8 border border-border rounded-3xl bg-card/30">
+                <div className="eyebrow text-accent mb-4">Working Hours</div>
+                <div className="flex items-center gap-4 text-foreground/80">
+                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                    <span className="text-accent text-sm">Mon</span>
+                  </div>
+                  <div className="text-sm font-medium">Monday – Saturday</div>
+                </div>
+                <div className="mt-4 flex items-center gap-4 text-foreground/80">
+                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                    <span className="text-accent text-sm">9:30</span>
+                  </div>
+                  <div className="text-sm font-medium">9:30 AM – 6:30 PM (IST)</div>
+                </div>
               </div>
             </Reveal>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 space-y-8 lg:sticky lg:top-32 h-fit">
             <Reveal3D>
               <div className="p-8 md:p-10 border border-border rounded-4xl bg-card">
                 <span className="eyebrow text-accent">Send Us a Message</span>
-                <h2 className="font-display text-2xl md:text-3xl mt-4 mb-8 leading-[1.15]">We'll get back within one business day</h2>
+                <h2 className="font-display text-2xl md:text-3xl mt-4 mb-8 leading-[1.15]">We'll get back as soon as possible</h2>
 
                 {sent ? (
                   <div className="py-10 text-center">
@@ -155,13 +161,55 @@ function Contact() {
                         className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:border-accent focus:ring-1 focus:ring-accent outline-none transition resize-none"
                       />
                     </div>
-                    <button type="submit" className="mt-2 btn-primary shadow-brand hover:shadow-elegant">
+                    <button type="submit" className="mt-2 btn-primary shadow-brand hover:shadow-elegant w-full md:w-auto">
                       Send Message <ArrowRight className="w-4 h-4" />
                     </button>
                   </form>
                 )}
               </div>
             </Reveal3D>
+
+            <div className="grid md:grid-cols-5 gap-6">
+              <div className="md:col-span-2">
+                <Reveal delay={400}>
+                  <div className="h-full p-8 border border-border rounded-3xl bg-card/50 backdrop-blur-sm">
+                    <h3 className="font-display text-xl mb-4 text-gradient-brand">What to expect</h3>
+                    <div className="space-y-6">
+                      {[
+                        { n: "01", t: "Fast Response", d: "Expect a call back as soon as possible." },
+                        { n: "02", t: "Expert Advice", d: "Talk directly to our domain specialists." },
+                        { n: "03", t: "No Obligation", d: "Get clarity before making any commitments." },
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex gap-4">
+                          <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent font-display font-bold text-sm shrink-0">{item.n}</div>
+                          <div>
+                            <div className="font-semibold text-sm">{item.t}</div>
+                            <div className="text-xs opacity-60 leading-relaxed">{item.d}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+              
+              <div className="md:col-span-3">
+                <Reveal delay={500}>
+                  <div className="h-full rounded-3xl overflow-hidden border border-border relative group min-h-[250px]">
+                    <iframe
+                      title="True Waves Group office location"
+                      src="https://www.google.com/maps?q=Chennai,India&output=embed"
+                      className="w-full h-full absolute inset-0 grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                    <div className="absolute top-4 left-4 p-2 px-4 rounded-full bg-background/80 backdrop-blur-md border border-border text-[10px] eyebrow pointer-events-none">
+                      Our Main Office
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
           </div>
         </div>
       </section>
