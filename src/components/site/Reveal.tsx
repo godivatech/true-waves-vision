@@ -36,7 +36,7 @@ export function Reveal({
       transition: {
         duration: 0.8,
         delay: delay / 1000,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
       },
     },
   };
@@ -77,7 +77,7 @@ export function Reveal3D({
       transition: {
         duration: 1.2,
         delay: delay / 1000,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
       },
     },
   };

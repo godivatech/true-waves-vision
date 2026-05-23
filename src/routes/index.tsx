@@ -570,7 +570,7 @@ function Home() {
   );
 }
 
-function Section({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
+function Section({ eyebrow, title, children }: { eyebrow: string; title: React.ReactNode; children: React.ReactNode }) {
   return (
     <section className="pt-24 lg:pt-32 pb-16 lg:pb-20">
       <div className="mx-auto section-container">
