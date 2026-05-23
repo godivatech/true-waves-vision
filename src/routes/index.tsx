@@ -3,7 +3,10 @@ import { useState } from "react";
 import { ArrowRight, Building2, Shield, TrendingUp, Users, Sparkles, Globe2, Award, Compass, Mountain, HardHat, LineChart, Handshake } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import heroImg from "@/assets/hero_premium.png";
-import projectsImg from "@/assets/projects.jpg";
+import residentialImg from "@/assets/project section images/resedential.png";
+import commercialImg from "@/assets/project section images/commercial.png";
+import infrastructureImg from "@/assets/project section images/infrastrucutre.png";
+import institutionalImg from "@/assets/project section images/Institutional.png";
 import mapImg from "@/assets/map.png";
 import investImg from "@/assets/1.png";
 import partnerImg from "@/assets/2.png";
@@ -398,25 +401,25 @@ function Home() {
               t: "Residential",
               d: "Modern living spaces designed for comfort, aesthetics, and long-term appreciation, catering to evolving lifestyle needs. Premium locations. Thoughtful architecture. Future-ready communities.",
               p: ["TVS Emerald Peninsula", "Indus Luxury Apartments", "RITZ Residences", "Alagar Homes"],
-              img: projectsImg
+              img: residentialImg
             },
             {
               t: "Commercial",
               d: "Strategically located developments offering high visibility, strong footfall, and sustainable rental yield potential. Designed to power businesses and maximize investment returns.",
               p: ["RSM Tower (Trichy)", "Lotus Shopping Centre (Madurai)", "Velraj Commercial Complex (Madurai)"],
-              img: projectsImg
+              img: commercialImg
             },
             {
               t: "Infrastructure",
               d: "Execution of large-scale infrastructure projects that contribute to industrial growth and national development. Driven by engineering excellence, compliance, and timely delivery.",
               p: ["Chennai Metro Rail (Teynampet)", "L&T Kudankulam", "Kellogg’s Sri City"],
-              img: projectsImg
+              img: infrastructureImg
             },
             {
               t: "Institutional / Hospital / Industrial",
               d: "Reliable execution of projects across education and healthcare sectors, ensuring quality, durability, and scalability. Building spaces that serve communities and future generations.",
               p: ["MGR University", "Thiagarajar College", "Govt. Hospital, Melur"],
-              img: projectsImg
+              img: institutionalImg
             },
           ].map((cat, i) => (
             <Reveal3D key={i} delay={i * 100} className="bg-card border border-border rounded-sm overflow-hidden flex flex-col">
