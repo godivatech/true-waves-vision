@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, Calendar, Clock } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Reveal, Reveal3D } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
@@ -92,7 +93,7 @@ function Contact() {
                 className="flex items-center justify-between gap-4 p-6 rounded-3xl bg-gradient-brand text-ink shadow-brand hover:shadow-elegant transition-all duration-500 group"
               >
                 <div className="flex items-center gap-4">
-                  <MessageCircle className="w-6 h-6" />
+                  <FaWhatsapp className="w-6 h-6" />
                   <div>
                     <div className="font-display text-lg">Quick Contact</div>
                     <div className="text-sm opacity-80">WhatsApp for faster response</div>
@@ -107,13 +108,13 @@ function Contact() {
                 <div className="eyebrow text-accent mb-4">Working Hours</div>
                 <div className="flex items-center gap-4 text-foreground/80">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                    <span className="text-accent text-sm">Mon</span>
+                    <Calendar className="w-5 h-5 text-accent" />
                   </div>
                   <div className="text-sm font-medium">Monday – Saturday</div>
                 </div>
                 <div className="mt-4 flex items-center gap-4 text-foreground/80">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                    <span className="text-accent text-sm">9:30</span>
+                    <Clock className="w-5 h-5 text-accent" />
                   </div>
                   <div className="text-sm font-medium">9:30 AM – 6:30 PM (IST)</div>
                 </div>
