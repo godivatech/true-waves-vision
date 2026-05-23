@@ -26,7 +26,7 @@ export function Footer() {
           <div className="eyebrow mb-4 text-primary-foreground/60">Explore</div>
           <ul className="space-y-3 text-base">
             <li><Link to="/about" className="opacity-80 hover:opacity-100 transition">About Us</Link></li>
-            <li><Link to="/pillars" className="opacity-80 hover:opacity-100 transition">Our Six Pillars</Link></li>
+            <li><Link to="/pillars" className="opacity-80 hover:opacity-100 transition">Our Five Pillars</Link></li>
             {/* <li><Link to="#" className="opacity-80 hover:opacity-100 transition">Blogs</Link></li> */}
             <li><Link to="/careers" className="opacity-80 hover:opacity-100 transition">Careers</Link></li>
             <li><Link to="/contact" className="opacity-80 hover:opacity-100 transition">Contact</Link></li>
@@ -34,7 +34,7 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="eyebrow mb-4 text-primary-foreground/60">Our Six Pillars</div>
+          <div className="eyebrow mb-4 text-primary-foreground/60">Our Five Pillars</div>
           <ul className="space-y-3 text-base opacity-80">
             {pillars.map((p) => (
               <li key={p.id}>

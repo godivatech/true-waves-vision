@@ -3,7 +3,7 @@ ________________________________________
 HOME PAGE: Main Navigation
 Home
 About Us
-Our Six Pillars
+Our Five Pillars
 Blogs
 Careers
 Contact Us
@@ -16,7 +16,7 @@ Trusted Investment & Development Group in South India | True Waves Group
 HERO HEADLINE
 We Help You Invest Smarter, Build Better and Grow Faster.
 SUB-HEADLINE
-True Waves Group is a South India-based investment and development conglomerate built on six expert pillars — real estate, valuation, association, enterprise and scaffolding. One trusted group. Everything you need to grow.
+True Waves Group is a South India-based investment and development conglomerate built on five expert pillars — real estate, valuation, association, enterprise and scaffolding. One trusted group. Everything you need to grow.
 TRUST BADGES
 20+ Projects | 18+ Years Experience | 50+ Trusted Partners | ISO 9001:2015 Certified 
 CTA BUTTONS
@@ -37,7 +37,7 @@ ________________________________________
 Investors, developers, agents & institutions who trust True Waves Group
 
 
-"When six expert teams work as one, the results speak for themselves." 
+"When five expert teams work as one, the results speak for themselves." 
 
  
 WHY CHOOSE TRUE WAVES GROUP
@@ -173,7 +173,7 @@ Today, True Waves Group stands as a dynamic ecosystem spanning real estate, infr
 Trusted by a growing network of clients, investors, and institutions, we combine strategic insight with execution excellence to create assets that are not only built for today, but positioned for enduring growth
 ________________________________________
 🚀 What do we actually do?
-Instead of doing just one thing—we built six powerful verticals that work together:
+Instead of doing just one thing—we built five powerful verticals that work together:
 Real Estate Development 
 Engineering, Construction & Project Execution
 Professional Valuation & Advisory (IBBI Registered)
@@ -273,9 +273,9 @@ ________________________________________
 
 
 ________________________________________
-OUR SIX PILLARS PAGE
-Our Six Pillars
-True Waves Group's strength lies in the unity of its six specialised business pillars. Each pillar is a high-performing team in its own right — together, they form an unmatched ecosystem of investment, development and innovation in South India.
+OUR FIVE PILLARS PAGE
+Our Five Pillars
+True Waves Group's strength lies in the unity of its five specialised business pillars. Each pillar is a high-performing team in its own right — together, they form an unmatched ecosystem of investment, development and innovation in South India.
 
 Click any pillar below to learn more:
 
