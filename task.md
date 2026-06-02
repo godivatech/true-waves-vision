@@ -432,7 +432,7 @@ Choose what fits you best—we’ll connect you with the right expert.
 ________________________________________
 📍 VISIT OR REACH US
 🏢 Chennai Office
-27/5, Easwaran Koil Street,
+17/13, Easwaran Koil Street,
 Vellai Thottam, West Mambalam,
 Chennai – 600 033
 📞 044-45837877

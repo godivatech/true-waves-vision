@@ -58,7 +58,7 @@ export function Footer() {
             <li className="flex gap-3 items-start">
               <MapPin className="w-4 h-4 mt-1 text-accent shrink-0" />
               <span>
-                <strong>Chennai:</strong> 27/5, Easwaran Koil St, West Mambalam, Chennai – 600033
+                <strong>Chennai:</strong> 17/13, Easwaran Koil St, West Mambalam, Chennai – 600033
               </span>
             </li>
             <li className="flex gap-3 items-start">

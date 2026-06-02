@@ -65,7 +65,7 @@ function Contact() {
             </Reveal>
 
             {[
-              { icon: MapPin, t: "Chennai Office", d: "27/5, Easwaran Koil Street,\nVellai Thottam, West Mambalam,\nChennai – 600 033" },
+              { icon: MapPin, t: "Chennai Office", d: "17/13, Easwaran Koil Street,\nVellai Thottam, West Mambalam,\nChennai – 600 033" },
               { icon: Phone, t: "Chennai Phone", d: "044-45837877" },
               { icon: MapPin, t: "Madurai Office", d: "No. 5, North Street,\nSingarayar Colony, Narimedu,\nMadurai – 625 002" },
               { icon: Phone, t: "Madurai Phone", d: "0452 2535226" },
