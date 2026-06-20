@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from "react";
 import { Target, Compass, Heart, Shield, Sparkles, TrendingUp, Layers, Zap, Trophy, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
@@ -269,9 +269,9 @@ function About() {
               >
                 Contact Us
               </button>
-              <a href="/pillars" className="inline-flex items-center gap-3 bg-card border border-border text-foreground px-8 py-3.5 rounded-full text-base font-medium hover:border-primary/50 transition-all duration-500">
+              <Link to="/pillars" className="inline-flex items-center gap-3 bg-card border border-border text-foreground px-8 py-3.5 rounded-full text-base font-medium hover:border-primary/50 transition-all duration-500">
                 Explore Our Pillars
-              </a>
+              </Link>
             </div>
           </Reveal3D>
         </div>

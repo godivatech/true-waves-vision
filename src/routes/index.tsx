@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Building2, Shield, TrendingUp, Users, Sparkles, Globe2, Award, Compass, Mountain, HardHat, LineChart, Handshake } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
@@ -40,6 +40,7 @@ const pillarBgs = [realtyBg, associatesBg, valuatorsBg, enterpriseBg, scaffoldin
 
 function InteractivePillarsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-ink text-primary-foreground relative overflow-hidden">
@@ -68,7 +69,17 @@ function InteractivePillarsSection() {
             return (
               <motion.div
                 key={p.id}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => {
+                  if (isActive) {
+                    if (p.externalLink) {
+                      window.open(p.externalLink, "_blank", "noopener,noreferrer");
+                    } else {
+                      navigate({ to: "/pillars", hash: p.id });
+                    }
+                  } else {
+                    setActiveIndex(index);
+                  }
+                }}
                 initial={false}
                 animate={{
                   flex: isActive ? '8 1 0%' : '1 1 0%',
@@ -143,13 +154,19 @@ function InteractivePillarsSection() {
                         href={p.externalLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-foreground transition-colors"
                       >
-                        Explore enterprise <ArrowRight className="w-4 h-4" />
+                        Visit Website <ArrowRight className="w-4 h-4" />
                       </a>
                     ) : (
-                      <Link to="/pillars" className="inline-flex items-center gap-2 text-accent font-medium hover:text-white transition-colors">
-                        Explore enterprise <ArrowRight className="w-4 h-4" />
+                      <Link
+                        to="/pillars"
+                        hash={p.id}
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 text-accent font-medium hover:text-white transition-colors"
+                      >
+                        Explore Details <ArrowRight className="w-4 h-4" />
                       </Link>
                     )}
                   </div>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Building2, Handshake, LineChart, Sparkles, Compass, HardHat, ArrowRight, MousePointer2 } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Reveal } from "@/components/site/Reveal";
@@ -37,9 +37,40 @@ function Pillars() {
   });
 
   // Map vertical scroll (0 to 1) to horizontal movement
-  // We have 6 pillars, so we want to scroll through them.
+  // We have 5 pillars, so we want to scroll through them.
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
   const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      const index = pillars.findIndex((p) => p.id === hash);
+      if (index === -1) return;
+
+      // Delay slightly to allow layout and resources to load
+      const timer = setTimeout(() => {
+        if (containerRef.current) {
+          const rect = containerRef.current.getBoundingClientRect();
+          const containerTop = window.scrollY + rect.top;
+          const scrollableHeight = containerRef.current.scrollHeight - window.innerHeight;
+          const targetScrollY = containerTop + (index / 4) * scrollableHeight;
+
+          window.scrollTo({
+            top: targetScrollY,
+            behavior: "smooth",
+          });
+        }
+      }, 300);
+
+      return () => clearTimeout(timer);
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   return (
     <div className="bg-ink selection:bg-accent selection:text-white">
@@ -113,12 +144,28 @@ function Pillars() {
                       >
                         <span className="eyebrow text-accent mb-6 block tracking-[0.2em]">{p.tagline}</span>
                         <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-bold text-white mb-8">
-                          {p.name.split(' ').map((word, idx, arr) => (
-                            <span key={idx} className={idx > 1 ? "text-accent" : ""}>
-                              {word}
-                              {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
-                            </span>
-                          ))}
+                          {p.externalLink ? (
+                            <a
+                              href={p.externalLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-accent transition-colors duration-300"
+                            >
+                              {p.name.split(' ').map((word, idx, arr) => (
+                                <span key={idx} className={idx > 1 ? "text-accent" : ""}>
+                                  {word}
+                                  {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
+                                </span>
+                              ))}
+                            </a>
+                          ) : (
+                            p.name.split(' ').map((word, idx, arr) => (
+                              <span key={idx} className={idx > 1 ? "text-accent" : ""}>
+                                {word}
+                                {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
+                              </span>
+                            ))
+                          )}
                         </h2>
                         <p className="text-xl text-white/60 leading-relaxed mb-12 max-w-lg">
                           {p.description}

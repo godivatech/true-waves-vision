@@ -43,7 +43,7 @@ export function Footer() {
                     {p.name}
                   </a>
                 ) : (
-                  <Link to="/pillars" className="hover:text-white transition">
+                  <Link to="/pillars" hash={p.id} className="hover:text-white transition">
                     {p.name}
                   </Link>
                 )}
