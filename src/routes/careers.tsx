@@ -4,6 +4,7 @@ import { Briefcase, Heart, TrendingUp, Users, MapPin, ArrowRight } from "lucide-
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Reveal, Reveal3D } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
+import { useLenis } from "lenis/react";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -35,6 +36,8 @@ const benefits = [
 
 function Careers() {
   const [sent, setSent] = useState(false);
+  const [selectedPosition, setSelectedPosition] = useState("");
+  const lenis = useLenis();
   const { scrollYProgress } = useScroll();
   
   const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
@@ -75,6 +78,44 @@ function Careers() {
       <section className="pt-24 lg:pt-32 pb-12 lg:pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
+            <span className="eyebrow text-accent">Current Openings</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 leading-[1.15]">Roles we're hiring for</h2>
+          </Reveal>
+          <div className="border-t border-border">
+            {openings.map((o, i) => (
+              <Reveal key={i} delay={i * 50}>
+                <div
+                  onClick={() => {
+                    setSelectedPosition(o.title);
+                    setTimeout(() => {
+                      if (lenis) {
+                        lenis.scrollTo("#apply");
+                      } else {
+                        document.getElementById("apply")?.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }, 50);
+                  }}
+                  className="cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 border-b border-border hover:bg-background/50 transition-colors px-4 -mx-4"
+                >
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl group-hover:text-accent transition-colors">{o.title}</h3>
+                    <div className="eyebrow text-muted-foreground mt-2">{o.dept}</div>
+                  </div>
+                  <div className="flex items-center gap-6 text-base text-muted-foreground">
+                    <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {o.loc}</span>
+                    <span>{o.type}</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 group-hover:text-accent transition-all" />
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-12 lg:pt-16 pb-12 lg:pb-16 bg-muted/20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <Reveal>
             <span className="eyebrow text-accent">What It's Like To Work Here</span>
             <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 max-w-2xl leading-[1.15]">Not a corporate box<br />A place to grow</h2>
           </Reveal>
@@ -90,7 +131,7 @@ function Careers() {
         </div>
       </section>
 
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/20">
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/30">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <Reveal>
@@ -103,10 +144,10 @@ function Careers() {
             <Reveal delay={100}>
               <ul className="space-y-6">
                 {[
-                  "You like taking ownership, not just following instructions",
-                  "You want to learn across industries, not stay limited to one role",
-                  "You’re looking for growth—not just a salary",
-                  "You want your work to actually make an impact"
+                   "You like taking ownership, not just following instructions",
+                   "You want to learn across industries, not stay limited to one role",
+                   "You’re looking for growth—not just a salary",
+                   "You want your work to actually make an impact"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-4 p-6 border border-border rounded-sm bg-card hover-lift">
                     <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center shrink-0 mt-0.5">
@@ -117,32 +158,6 @@ function Careers() {
                 ))}
               </ul>
             </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal>
-            <span className="eyebrow text-accent">Current Openings</span>
-            <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 leading-[1.15]">Roles we're hiring for</h2>
-          </Reveal>
-          <div className="border-t border-border">
-            {openings.map((o, i) => (
-              <Reveal key={i} delay={i * 50}>
-                <a href="#apply" className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 border-b border-border hover:bg-background/50 transition-colors px-4 -mx-4">
-                  <div>
-                    <h3 className="font-display text-2xl md:text-3xl group-hover:text-accent transition-colors">{o.title}</h3>
-                    <div className="eyebrow text-muted-foreground mt-2">{o.dept}</div>
-                  </div>
-                  <div className="flex items-center gap-6 text-base text-muted-foreground">
-                    <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {o.loc}</span>
-                    <span>{o.type}</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 group-hover:text-accent transition-all" />
-                  </div>
-                </a>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
@@ -172,7 +187,13 @@ function Careers() {
                 <Field label="Phone" name="phone" type="tel" required />
                 <Field label="Email" name="email" type="email" required />
               </div>
-              <Field label="Position Applying For" name="position" required />
+              <Field
+                label="Position Applying For"
+                name="position"
+                required
+                value={selectedPosition}
+                onChange={(e) => setSelectedPosition(e.target.value)}
+              />
               {/* Temporarily commented outed */}
               {/* <div>
                 <label className="eyebrow block mb-2">Resume</label>
@@ -199,7 +220,21 @@ function Careers() {
   );
 }
 
-function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  value,
+  onChange,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) {
   return (
     <div>
       <label className="eyebrow block mb-2">{label}</label>
@@ -207,6 +242,8 @@ function Field({ label, name, type = "text", required }: { label: string; name: 
         type={type}
         name={name}
         required={required}
+        value={value}
+        onChange={onChange}
         maxLength={200}
         className="w-full px-4 py-3 bg-background border border-border rounded-sm focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
       />
