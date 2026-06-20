@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from "react";
-import { Target, Compass, Heart, Shield, Sparkles, TrendingUp, Layers, Zap, Trophy, CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { Target, Compass, Heart, Shield, Sparkles, TrendingUp, Layers, Zap, Trophy, CheckCircle2, ArrowRight } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { Reveal, Reveal3D, GSAPReveal } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
@@ -281,75 +282,93 @@ function About() {
 }
 
 function LeadershipGrid() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedLeader, setSelectedLeader] = useState<typeof leaders[number] | null>(null);
 
   return (
-    <div className="grid md:grid-cols-2 gap-8 items-start">
-      {leaders.map((l, i) => (
-        <motion.div
-          key={l.name}
-          layout
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-          className={`group flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500 overflow-hidden relative ${expandedIndex === i ? 'md:col-span-2' : ''
+    <>
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        {leaders.map((l, i) => (
+          <motion.div
+            key={l.name}
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className={`group flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500 overflow-hidden relative cursor-pointer ${
+              i === 0 ? 'md:col-span-2' : ''
             }`}
-        >
-          {/* Subtle background ID */}
-          <div className="absolute top-0 right-0 p-8 font-display text-6xl font-black text-accent/[0.03] select-none pointer-events-none">
-            0{i + 1}
-          </div>
-
-          <motion.div layout="position" className="flex flex-col sm:flex-row items-center sm:items-end gap-6 mb-10 text-center sm:text-left">
-            <div className="shrink-0 w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-3xl bg-gradient-hero flex items-center justify-center font-display text-4xl text-white font-bold shadow-brand overflow-hidden border-4 border-background ring-1 ring-border">
-              {l.image ? (
-                <img src={l.image} alt={l.name} className="w-full h-full object-cover" />
-              ) : (
-                l.initials
-              )}
+            onClick={() => setSelectedLeader(l)}
+          >
+            {/* Subtle background ID */}
+            <div className="absolute top-0 right-0 p-8 font-display text-6xl font-black text-accent/[0.03] select-none pointer-events-none">
+              0{i + 1}
             </div>
-            <div className="pb-2">
-              <div className="eyebrow text-accent mb-2 text-xs lg:text-sm">{l.role}</div>
-              <h3 className="font-display text-2xl lg:text-4xl font-bold text-foreground leading-tight tracking-tight">{l.name}</h3>
+
+            <motion.div layout="position" className="flex flex-col sm:flex-row items-center sm:items-end gap-6 mb-8 text-center sm:text-left">
+              <div className="shrink-0 w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-3xl bg-gradient-hero flex items-center justify-center font-display text-4xl text-white font-bold shadow-brand overflow-hidden border-4 border-background ring-1 ring-border">
+                {l.image ? (
+                  <img src={l.image} alt={l.name} className="w-full h-full object-cover" />
+                ) : (
+                  l.initials
+                )}
+              </div>
+              <div className="pb-2">
+                <div className="eyebrow text-accent mb-2 text-xs lg:text-sm">{l.role}</div>
+                <h3 className="font-display text-2xl lg:text-4xl font-bold text-foreground leading-tight tracking-tight">{l.name}</h3>
+              </div>
+            </motion.div>
+
+            <div className="relative">
+              <p className="text-muted-foreground leading-relaxed line-clamp-3 lg:line-clamp-4">
+                {l.bio}
+              </p>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedLeader(l);
+                }}
+                className="mt-6 flex items-center gap-2 text-accent font-bold text-sm tracking-widest uppercase hover:text-foreground transition-colors group/btn"
+              >
+                Read Full Bio <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </button>
             </div>
           </motion.div>
+        ))}
+      </div>
 
-          <div className="relative">
-            <motion.p
-              layout
-              className={`text-muted-foreground leading-relaxed transition-all duration-500 ${expandedIndex === i ? 'text-lg lg:text-xl' : 'line-clamp-3 lg:line-clamp-4'
-                }`}
-            >
-              {l.bio}
-            </motion.p>
-
-            <motion.button
-              layout
-              onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
-              className="mt-6 flex items-center gap-2 text-accent font-bold text-sm tracking-widest uppercase hover:text-ink transition-colors group/btn"
-            >
-              {expandedIndex === i ? (
-                <>Collapse Bio <ChevronUp className="w-4 h-4 group-hover/btn:-translate-y-1 transition-transform" /></>
-              ) : (
-                <>Read Full Bio <ChevronDown className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" /></>
-              )}
-            </motion.button>
-          </div>
-
-          {expandedIndex === i && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mt-12 pt-8 border-t border-border/40 flex items-center justify-between"
-            >
-              <div className="text-xs font-bold tracking-[0.2em] text-accent/40 uppercase">Senior Management</div>
-              <div className="text-xs font-medium text-muted-foreground italic">Compounding trust since 2008</div>
-            </motion.div>
+      <Dialog open={selectedLeader !== null} onOpenChange={(open) => { if (!open) setSelectedLeader(null); }}>
+        <DialogContent className="w-[calc(100%-2rem)] max-w-2xl max-h-[85vh] overflow-y-auto bg-ink text-primary-foreground border-white/10 rounded-3xl p-6 sm:p-10 scrollbar-none">
+          {selectedLeader && (
+            <div className="flex flex-col gap-6 sm:gap-8">
+              <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5 sm:gap-6 text-center sm:text-left">
+                <div className="shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-gradient-hero flex items-center justify-center font-display text-3xl sm:text-4xl text-white font-bold shadow-brand overflow-hidden border-4 border-background ring-1 ring-border">
+                  {selectedLeader.image ? (
+                    <img src={selectedLeader.image} alt={selectedLeader.name} className="w-full h-full object-cover" />
+                  ) : (
+                    selectedLeader.initials
+                  )}
+                </div>
+                <div className="pb-1 sm:pb-2">
+                  <div className="eyebrow text-accent mb-1.5 sm:mb-2 text-xs lg:text-sm">{selectedLeader.role}</div>
+                  <DialogTitle className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight">
+                    {selectedLeader.name}
+                  </DialogTitle>
+                </div>
+              </div>
+              <DialogDescription className="text-white/70 text-base sm:text-lg leading-relaxed pt-4 border-t border-white/10">
+                {selectedLeader.bio}
+              </DialogDescription>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-white/40 pt-4 border-t border-white/5">
+                <div className="text-xs font-bold tracking-[0.2em] uppercase">Senior Management</div>
+                <div className="text-xs font-medium italic">Compounding trust since 2008</div>
+              </div>
+            </div>
           )}
-        </motion.div>
-      ))}
-    </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
