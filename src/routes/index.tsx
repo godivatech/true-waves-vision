@@ -475,7 +475,7 @@ function Home() {
             </p>
             <div className="mt-10 space-y-6">
               {[
-                { t: "Strategic Locations", d: "Active across Tier 1 and high-growth Tier 2 cities in Tamil Nadu (Chennai, Madurai, Trichy)." },
+                { t: "Strategic Locations", d: "Active across Tier 1 and high-growth Tier 2 cities in Tamil Nadu (Chennai, Coimbatore, Madurai, Trichy)." },
                 { t: "Future-Ready Land Holdings", d: "Positioned in upcoming corridors with strong appreciation potential." },
                 { t: "On-Ground Accessibility", d: "Operational offices in West Mambalam (Chennai) & Narimedu (Madurai)." },
                 { t: "Strong Institutional Network", d: "Connected with banks, NBFCs, government bodies & private institutions." },

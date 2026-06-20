@@ -108,6 +108,49 @@ function About() {
       </section>
 
       <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-muted/20">
+        <div className="mx-auto section-container grid md:grid-cols-2 gap-12">
+          <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full">
+            <Target className="w-8 h-8 text-accent mb-6" />
+            <span className="eyebrow text-accent">Our Vision</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
+              To shape the future of capital deployment
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Building a platform where every decision compounds into enduring value and long-horizon growth through clarity and discipline.
+            </p>
+          </Reveal3D>
+          <Reveal3D delay={120} className="p-10 border border-border rounded-3xl bg-card h-full">
+            <Compass className="w-8 h-8 text-accent mb-6" />
+            <span className="eyebrow text-accent">Our Mission</span>
+            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
+              To convert vision into velocity
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Orchestrating intelligence, technology, and execution with precision to deliver measurable, scalable performance consistently ahead of the curve.
+            </p>
+          </Reveal3D>
+        </div>
+      </section>
+
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20">
+        <div className="mx-auto section-container">
+          <Reveal>
+            <span className="eyebrow text-accent">Our Core Values</span>
+            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-2xl leading-[1.15]">The principles that guide every decision</h2>
+          </Reveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+            {values.map((v, i) => (
+              <Reveal3D key={i} delay={i * 70} className="bg-background p-8 group h-full">
+                <v.icon className="w-7 h-7 text-accent mb-5 group-hover:scale-110 transition-transform duration-500" />
+                <h3 className="font-display text-2xl mb-2">{v.t}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">{v.d}</p>
+              </Reveal3D>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/30">
         <div className="mx-auto section-container grid md:grid-cols-3 gap-8 lg:gap-10">
           <GSAPReveal className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
@@ -189,57 +232,14 @@ function About() {
                 </ul>
               </div>
               <div className="mt-10 pt-8 border-t border-border/50">
-                <div className="font-display text-3xl font-black text-accent/20">18+ YEARS</div>
+                <div className="font-display text-3xl font-black text-accent">18+ YEARS</div>
               </div>
             </div>
           </GSAPReveal>
         </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20">
-        <div className="mx-auto section-container grid md:grid-cols-2 gap-12">
-          <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full">
-            <Target className="w-8 h-8 text-accent mb-6" />
-            <span className="eyebrow text-accent">Our Vision</span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
-              To shape the future of capital deployment
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Building a platform where every decision compounds into enduring value and long-horizon growth through clarity and discipline.
-            </p>
-          </Reveal3D>
-          <Reveal3D delay={120} className="p-10 border border-border rounded-3xl bg-card h-full">
-            <Compass className="w-8 h-8 text-accent mb-6" />
-            <span className="eyebrow text-accent">Our Mission</span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
-              To convert vision into velocity
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Orchestrating intelligence, technology, and execution with precision to deliver measurable, scalable performance consistently ahead of the curve.
-            </p>
-          </Reveal3D>
-        </div>
-      </section>
-
-      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/30">
-        <div className="mx-auto section-container">
-          <Reveal>
-            <span className="eyebrow text-accent">Our Core Values</span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-2xl leading-[1.15]">The principles that guide every decision</h2>
-          </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {values.map((v, i) => (
-              <Reveal3D key={i} delay={i * 70} className="bg-background p-8 group h-full">
-                <v.icon className="w-7 h-7 text-accent mb-5 group-hover:scale-110 transition-transform duration-500" />
-                <h3 className="font-display text-2xl mb-2">{v.t}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed">{v.d}</p>
-              </Reveal3D>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-muted/10">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32">
         <div className="mx-auto section-container">
           <Reveal>
             <span className="eyebrow text-accent">Leadership</span>
