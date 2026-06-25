@@ -594,7 +594,7 @@ function Section({ eyebrow, title, children }: { eyebrow: string; title: React.R
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div>
               <span className="eyebrow text-accent">{eyebrow}</span>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 max-w-4xl leading-tight">{title}</h2>
+              <h2 className="font-display text-3xl md:text-4xl xl:text-5xl mt-4 max-w-none leading-tight">{title}</h2>
             </div>
           </div>
         </Reveal>
