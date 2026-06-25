@@ -550,7 +550,7 @@ function Home() {
       </section>
 
       {/* PRESENCE */}
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-48 bg-muted/30">
+      <section className="pt-12 lg:pt-16 pb-8 lg:pb-12 bg-muted/30">
         <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <Reveal>
             <span className="eyebrow text-accent">Our Presence & Visibility</span>

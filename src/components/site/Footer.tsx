@@ -5,7 +5,7 @@ import { pillars } from "@/data/pillars";
 
 export function Footer() {
   return (
-    <footer className="bg-background text-foreground border-t border-border mt-32">
+    <footer className="bg-background text-foreground border-t border-border mt-0">
       <div className="mx-auto section-container py-20 grid gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
           <div className="flex items-center mb-8">
