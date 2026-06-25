@@ -43,19 +43,19 @@ function InteractivePillarsSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-ink text-primary-foreground relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-accent/20 blur-[120px] rounded-full opacity-50 pointer-events-none" />
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-background text-foreground relative overflow-hidden border-y border-border">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-accent/5 blur-[120px] rounded-full opacity-40 pointer-events-none" />
 
       <div className="mx-auto section-container relative z-10">
         <GSAPReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <div>
-              <span className="eyebrow text-accent/80">Our Five Pillars</span>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mt-4 leading-[1.1] font-semibold">
-                One group<br />Five enterprises
+              <span className="eyebrow text-accent">Our Five Pillars</span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 leading-tight font-semibold text-foreground">
+                One Group, Five Enterprises
               </h2>
             </div>
-            <p className="text-lg text-primary-foreground/60 max-w-md">
+            <p className="text-lg text-muted-foreground max-w-md">
               A unified ecosystem designed to seamlessly manage every aspect of your real estate, valuation, and enterprise needs.
             </p>
           </div>
@@ -87,7 +87,7 @@ function InteractivePillarsSection() {
                   z: isActive ? 20 : 0
                 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/10"
+                className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-[#0A1128] border border-white/5 hover:border-white/10"
                 style={{ transformStyle: "preserve-3d", willChange: "flex, transform" }}
               >
                 {/* Background Image */}
@@ -103,7 +103,7 @@ function InteractivePillarsSection() {
 
                 {/* Active Background Gradient Overlay */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                  className={`absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}
                 />
 
                 {/* Number indicator */}
@@ -117,7 +117,7 @@ function InteractivePillarsSection() {
                   <div className="flex items-center gap-4">
                     <div className={`
                       flex items-center justify-center rounded-2xl transition-all duration-700 shrink-0
-                      ${isActive ? 'w-14 h-14 bg-accent text-accent-foreground shadow-lg shadow-accent/20' : 'w-12 h-12 bg-white/5 text-primary-foreground/40'}
+                      ${isActive ? 'w-14 h-14 bg-accent text-accent-foreground shadow-lg shadow-accent/20' : 'w-12 h-12 bg-white/5 text-white/40'}
                     `}>
                       <Icon className={isActive ? "w-7 h-7" : "w-6 h-6"} />
                     </div>
@@ -125,13 +125,13 @@ function InteractivePillarsSection() {
                     {/* Title Text wrapper */}
                     <div className="relative flex-grow h-14 flex flex-col justify-center overflow-hidden">
                       <div
-                        className="absolute left-0 w-[500px] transition-all duration-700 ease-in-out"
+                        className="absolute left-0 w-[500px] transition-all duration-700 ease-in-out text-white"
                         style={{
                           opacity: isActive ? 1 : 0,
                           transform: isActive ? 'translateX(0)' : 'translateX(20px)'
                         }}
                       >
-                        <span className="eyebrow text-white block mb-1 drop-shadow-sm">{p.tagline}</span>
+                        <span className="eyebrow text-white/80 block mb-1 drop-shadow-sm">{p.tagline}</span>
                         <h3 className="font-display text-2xl font-bold whitespace-nowrap">{p.name}</h3>
                       </div>
                     </div>
@@ -139,14 +139,14 @@ function InteractivePillarsSection() {
 
                   {/* Expanded description */}
                   <div
-                    className="transition-all duration-700 ease-in-out overflow-hidden"
+                    className="transition-all duration-700 ease-in-out overflow-hidden text-white"
                     style={{
                       maxHeight: isActive ? '200px' : '0px',
                       opacity: isActive ? 1 : 0,
                       marginTop: isActive ? '1rem' : '0'
                     }}
                   >
-                    <p className="text-primary-foreground/70 mb-6 leading-relaxed max-w-2xl line-clamp-3">
+                    <p className="text-white/70 mb-6 leading-relaxed max-w-2xl line-clamp-3">
                       {p.description}
                     </p>
                     {p.externalLink ? (
@@ -155,7 +155,7 @@ function InteractivePillarsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-foreground transition-colors"
+                        className="inline-flex items-center gap-2 text-accent font-medium hover:text-white transition-colors"
                       >
                         Visit Website <ArrowRight className="w-4 h-4" />
                       </a>
@@ -267,7 +267,7 @@ function Home() {
       </section>
 
       {/* STRENGTH IN NUMBERS */}
-      <Section eyebrow="Our Strength in Numbers" title={<>18+ Years of Proven Excellence<br />Across South India</>}>
+      <Section eyebrow="Our Strength in Numbers" title="18+ Years of Proven Excellence Across South India">
         <p className="-mt-8 mb-12 max-w-2xl text-muted-foreground leading-relaxed">
           Delivering reliable solutions since 2008 — built on trust, performance, and long-term relationships.
         </p>
@@ -296,8 +296,10 @@ function Home() {
         eyebrow="Why Choose True Waves Group" 
         title={
           <>
-            <span className="opacity-40">Built for Trust</span><br />
-            <span className="opacity-70">Driven by Data</span><br />
+            <span className="opacity-40">Built for Trust</span>
+            <span className="opacity-30 mx-4">•</span>
+            <span className="opacity-70">Driven by Data</span>
+            <span className="opacity-30 mx-4">•</span>
             <span>Designed for Growth</span>
           </>
         }
@@ -330,13 +332,9 @@ function Home() {
           <div className="text-center mb-24 lg:mb-32">
             <Reveal>
               <span className="eyebrow text-accent/80 mb-6 block">Investment Intelligence</span>
-              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-10 text-balance">
-                Smart Investments<br />
-                <span className="text-gradient-brand italic">Secure Growth</span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-10">
+                Smart Investments, <span className="text-gradient-brand italic">Secure Growth</span>
               </h2>
-              <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed text-balance">
-                The right investment isn’t just about returns—it’s about clarity, confidence, and long-term value. We bridge the gap between vision and high-yield reality.
-              </p>
             </Reveal>
           </div>
 
@@ -469,7 +467,7 @@ function Home() {
         <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <Reveal>
             <span className="eyebrow text-accent">Our Presence & Visibility</span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 font-semibold">Positioned Where<br />Growth Happens</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Positioned Where Growth Happens</h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
               True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
             </p>
@@ -506,9 +504,8 @@ function Home() {
           <div className="text-center mb-20 lg:mb-28">
             <Reveal>
               <span className="eyebrow text-accent/80 mb-6 block">Strategic Collaboration</span>
-              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tighter mb-8 text-balance">
-                One Ecosystem<br />
-                <span className="text-gradient-brand italic">Multiple Paths</span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-8">
+                One Ecosystem, <span className="text-gradient-brand italic">Multiple Paths</span>
               </h2>
               <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed">
                 Whether you're entering the market or scaling your presence, we offer structured, high-value collaborations built on transparency.
@@ -598,7 +595,7 @@ function Section({ eyebrow, title, children }: { eyebrow: string; title: React.R
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div>
               <span className="eyebrow text-accent">{eyebrow}</span>
-              <h2 className="font-display text-4xl md:text-5xl mt-4 max-w-2xl text-balance leading-[1.15]">{title}</h2>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 max-w-4xl leading-tight">{title}</h2>
             </div>
           </div>
         </Reveal>
