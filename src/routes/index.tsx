@@ -323,16 +323,16 @@ function Home() {
         </div>
       </Section>
 
-      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-background text-foreground overflow-hidden border-t border-border">
+      <section className="relative pt-16 lg:pt-20 pb-16 lg:pb-20 bg-background text-foreground overflow-hidden border-t border-border">
         {/* Background Glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] bg-accent/5 blur-[140px] rounded-full pointer-events-none" />
 
         <div className="mx-auto section-container relative z-10">
-          <div className="text-center mb-24 lg:mb-32">
+          <div className="text-center mb-12 lg:mb-16">
             <Reveal>
               <span className="eyebrow text-accent mb-6 block">Investment Intelligence</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-10 text-foreground">
-                Smart Investments, <span className="text-gradient-brand italic">Secure Growth</span>
+                Smart Investments - <span className="text-gradient-brand italic">Secure Growth</span>
               </h2>
             </Reveal>
           </div>
