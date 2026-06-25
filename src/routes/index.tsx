@@ -123,7 +123,7 @@ function InteractivePillarsSection() {
                     </div>
 
                     {/* Title Text wrapper */}
-                    <div className="relative flex-grow h-14 flex flex-col justify-center overflow-hidden">
+                    <div className="relative flex-grow min-h-[4.5rem] flex flex-col justify-center">
                       <div
                         className="absolute left-0 w-[500px] transition-all duration-700 ease-in-out text-white"
                         style={{
