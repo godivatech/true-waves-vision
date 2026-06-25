@@ -10,6 +10,7 @@ import sanjayImg from "@/assets/team/sanjay.png";
 import narasimhanImg from "@/assets/team/narashimhan.png";
 import chiranjeeviImg from "@/assets/team/chiranjeevi.png";
 import santhanamImg from "@/assets/team/santhanam.png";
+import valuesImg from "@/assets/section images/1.png";
 
 
 export const Route = createFileRoute("/about")({
@@ -122,20 +123,37 @@ function About() {
 
       <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/40 border-y border-border">
         <div className="mx-auto section-container">
-          <Reveal>
-            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
-              Our Core Values
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-4xl leading-[1.15]">The principles that guide every decision</h2>
-          </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {values.map((v, i) => (
-              <Reveal3D key={i} delay={i * 70} className="bg-background border border-border rounded-3xl p-8 group h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
-                <v.icon className="w-7 h-7 text-accent mb-5 group-hover:scale-110 transition-transform duration-500" />
-                <h3 className="font-display text-2xl mb-2">{v.t}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed">{v.d}</p>
-              </Reveal3D>
-            ))}
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left side: Premium Image Container */}
+            <div className="lg:col-span-5 h-[350px] sm:h-[450px] lg:h-[600px] relative rounded-3xl overflow-hidden border border-border shadow-elegant group">
+              <img 
+                src={valuesImg} 
+                alt="True Waves Core Values" 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Right side: Values list */}
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+                  Our Core Values
+                </span>
+                <h2 className="font-display text-4xl md:text-5xl mt-4 mb-12 max-w-4xl leading-[1.15]">
+                  The principles that guide every decision
+                </h2>
+              </Reveal>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {values.map((v, i) => (
+                  <Reveal3D key={i} delay={i * 70} className="bg-background border border-border rounded-3xl p-8 group h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+                    <v.icon className="w-7 h-7 text-accent mb-5 group-hover:scale-110 transition-transform duration-500" />
+                    <h3 className="font-display text-2xl mb-2">{v.t}</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">{v.d}</p>
+                  </Reveal3D>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
