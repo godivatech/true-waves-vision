@@ -20,32 +20,16 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
-  const { scrollYProgress } = useScroll();
-  
-  const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
-  const heroTranslateZ = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
-  
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothRotateX = useSpring(heroRotateX, springConfig);
-  const smoothTranslateZ = useSpring(heroTranslateZ, springConfig);
-  const smoothScale = useSpring(heroScale, springConfig);
 
   return (
     <>
       <Floating3DBackground />
-      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain" style={{ perspective: "1500px" }}>
-        <motion.div 
-          style={{ 
-            rotateX: smoothRotateX,
-            translateZ: smoothTranslateZ,
-            scale: smoothScale,
-            transformStyle: "preserve-3d"
-          }}
-          className="mx-auto section-container relative"
-        >
+      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain">
+        <div className="mx-auto section-container relative">
           <Reveal>
-            <span className="eyebrow text-accent">Get in Touch</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Get in Touch
+            </span>
             <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
               Let's connect and <span className="text-gradient-brand">build together</span>
             </h1>
@@ -53,14 +37,16 @@ function Contact() {
               Whether you want to invest, partner, or grow—every conversation matters.
             </p>
           </Reveal>
-        </motion.div>
+        </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-background">
         <div className="mx-auto section-container grid lg:grid-cols-5 gap-12">
           <div className="lg:col-span-2 space-y-8">
             <Reveal>
-              <span className="eyebrow text-accent">Contact Information</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                Contact Information
+              </span>
               <h2 className="font-display text-2xl md:text-3xl mt-4 mb-8 leading-[1.15]">Reach us directly</h2>
             </Reveal>
 
@@ -75,10 +61,12 @@ function Contact() {
               { icon: Mail, t: "Careers", d: "careers@truewavesgroup.com" },
             ].map((c, i) => (
               <Reveal3D key={i} delay={i * 60}>
-                <div className="flex gap-5 p-6 border border-border rounded-2xl bg-card hover-lift h-full">
+                <div className="flex gap-5 p-6 border border-border rounded-2xl bg-card hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 h-full">
                   <c.icon className="w-6 h-6 text-accent shrink-0 mt-1" />
                   <div>
-                    <div className="eyebrow mb-1 text-xs">{c.t}</div>
+                    <div className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
+                      {c.t}
+                    </div>
                     <div className="text-foreground whitespace-pre-line leading-relaxed text-base">{c.d}</div>
                   </div>
                 </div>
@@ -105,7 +93,9 @@ function Contact() {
 
             <Reveal delay={300}>
               <div className="p-8 border border-border rounded-3xl bg-card/30">
-                <div className="eyebrow text-accent mb-4">Working Hours</div>
+                <span className="inline-flex items-center px-4 py-1 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                  Working Hours
+                </span>
                 <div className="flex items-center gap-4 text-foreground/80">
                   <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                     <Calendar className="w-5 h-5 text-accent" />
@@ -125,7 +115,9 @@ function Contact() {
           <div className="lg:col-span-3 space-y-8 lg:sticky lg:top-32 h-fit">
             <Reveal3D>
               <div className="p-8 md:p-10 border border-border rounded-4xl bg-card">
-                <span className="eyebrow text-accent">Send Us a Message</span>
+                <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                  Send Us a Message
+                </span>
                 <h2 className="font-display text-2xl md:text-3xl mt-4 mb-8 leading-[1.15]">We'll get back as soon as possible</h2>
 
                 {sent ? (
@@ -141,7 +133,9 @@ function Contact() {
                     </div>
                     <Field label="Email Address" name="email" type="email" />
                     <div>
-                      <label className="eyebrow block mb-2">I am interested in...</label>
+                      <label className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
+                        I am interested in...
+                      </label>
                       <select name="interest" className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:border-accent focus:ring-1 focus:ring-accent outline-none transition appearance-none">
                         <option value="">Select an option</option>
                         <option value="Investing">Investing</option>
@@ -153,7 +147,9 @@ function Contact() {
                       </select>
                     </div>
                     <div>
-                      <label className="eyebrow block mb-2">Message</label>
+                      <label className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
+                        Message
+                      </label>
                       <textarea
                         name="message"
                         required
@@ -221,7 +217,9 @@ function Contact() {
 function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <div>
-      <label className="eyebrow block mb-2">{label}</label>
+      <label className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
+        {label}
+      </label>
       <input
         type={type}
         name={name}

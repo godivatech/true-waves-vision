@@ -38,32 +38,16 @@ function Careers() {
   const [sent, setSent] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState("");
   const lenis = useLenis();
-  const { scrollYProgress } = useScroll();
-  
-  const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
-  const heroTranslateZ = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
-  
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothRotateX = useSpring(heroRotateX, springConfig);
-  const smoothTranslateZ = useSpring(heroTranslateZ, springConfig);
-  const smoothScale = useSpring(heroScale, springConfig);
 
   return (
     <>
       <Floating3DBackground />
-      <section className="relative pt-40 pb-16 bg-gradient-hero text-primary-foreground overflow-hidden grain" style={{ perspective: "1500px" }}>
-        <motion.div 
-          style={{ 
-            rotateX: smoothRotateX,
-            translateZ: smoothTranslateZ,
-            scale: smoothScale,
-            transformStyle: "preserve-3d"
-          }}
-          className="mx-auto max-w-7xl px-6 lg:px-10 relative"
-        >
+      <section className="relative pt-40 pb-16 bg-gradient-hero text-primary-foreground overflow-hidden grain">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 relative">
           <Reveal>
-            <span className="eyebrow text-accent">Careers at True Waves Group</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Careers at True Waves Group
+            </span>
             <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
               Build a Career <span className="text-gradient-brand">That Matters</span>
             </h1>
@@ -71,13 +55,15 @@ function Careers() {
               We work on real projects, solve real challenges, and drive real growth. Discover your next opportunity here.
             </p>
           </Reveal>
-        </motion.div>
+        </div>
       </section>
 
-      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16">
+      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-background">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <span className="eyebrow text-accent">Current Openings</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Current Openings
+            </span>
             <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 leading-[1.15]">Roles we're hiring for</h2>
           </Reveal>
           <div className="border-t border-border">
@@ -94,11 +80,11 @@ function Careers() {
                       }
                     }, 50);
                   }}
-                  className="cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 border-b border-border hover:bg-background/50 transition-colors px-4 -mx-4"
+                  className="cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 border-b border-border hover:bg-muted/30 hover:border-accent/40 rounded-2xl px-6 my-2 transition-all duration-300 hover:translate-x-1"
                 >
                   <div>
                     <h3 className="font-display text-2xl md:text-3xl group-hover:text-accent transition-colors">{o.title}</h3>
-                    <div className="eyebrow text-muted-foreground mt-2">{o.dept}</div>
+                    <div className="text-xs uppercase tracking-wider font-bold text-muted-foreground mt-2">{o.dept}</div>
                   </div>
                   <div className="flex items-center gap-6 text-base text-muted-foreground">
                     <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent" /> {o.loc}</span>
@@ -112,15 +98,17 @@ function Careers() {
         </div>
       </section>
 
-      <section className="pt-12 lg:pt-16 pb-12 lg:pb-16 bg-muted/20">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/40 border-y border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <span className="eyebrow text-accent">What It's Like To Work Here</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+              What It's Like To Work Here
+            </span>
             <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 max-w-2xl leading-[1.15]">Not a corporate box<br />A place to grow</h2>
           </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {benefits.map((b, i) => (
-              <Reveal3D key={i} delay={i * 80} className="bg-background p-8 h-full">
+              <Reveal3D key={i} delay={i * 80} className="bg-background border border-border rounded-3xl p-8 h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
                 <b.icon className="w-7 h-7 text-accent mb-5" />
                 <h3 className="font-display text-xl mb-2">{b.t}</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{b.d}</p>
@@ -130,11 +118,13 @@ function Careers() {
         </div>
       </section>
 
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/30">
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-background border-b border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <Reveal>
-              <span className="eyebrow text-accent">Is This You?</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                Is This You?
+              </span>
               <h2 className="font-display text-3xl md:text-4xl mt-4 mb-6 leading-[1.15]">Who we are looking for</h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 We don't just hire for skills; we hire for mindset. If the following sounds like you, you'll fit right in.
@@ -148,7 +138,7 @@ function Careers() {
                    "You’re looking for growth—not just a salary",
                    "You want your work to actually make an impact"
                 ].map((item, idx) => (
-                  <li key={idx} className="flex gap-4 p-6 border border-border rounded-sm bg-card hover-lift">
+                  <li key={idx} className="flex gap-4 p-6 border border-border rounded-2xl bg-card hover-lift">
                     <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center shrink-0 mt-0.5">
                       <div className="w-2 h-2 rounded-full bg-accent"></div>
                     </div>
@@ -161,14 +151,16 @@ function Careers() {
         </div>
       </section>
 
-      <section id="apply" className="pt-12 lg:pt-16 pb-24 lg:pb-32">
+      <section id="apply" className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/40 border-t border-border">
         <div className="mx-auto max-w-3xl px-6 lg:px-10">
           <Reveal>
-            <span className="eyebrow text-accent">Apply Now</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Apply Now
+            </span>
             <h2 className="font-display text-3xl md:text-4xl mt-4 mb-10 leading-[1.15]">Tell us about yourself</h2>
           </Reveal>
           {sent ? (
-            <div className="p-10 border border-accent rounded-sm bg-card text-center">
+            <div className="p-10 border border-accent rounded-2xl bg-card text-center">
               <h3 className="font-display text-2xl mb-2">Application received</h3>
               <p className="text-muted-foreground">Our team will review your profile and be in touch shortly.</p>
             </div>
@@ -198,7 +190,7 @@ function Careers() {
                 <label className="eyebrow block mb-2">Resume</label>
                 <input type="file" name="resume" accept=".pdf,.doc,.docx" className="block w-full text-base file:mr-4 file:py-3 file:px-5 file:rounded-sm file:border-0 file:bg-accent file:text-accent-foreground file:cursor-pointer hover:file:bg-ink hover:file:text-white transition" required />
               </div> */}
-                <button type="submit" className="mt-4 inline-flex items-center justify-center gap-3 bg-gradient-brand text-ink px-8 py-4 rounded-sm text-base font-medium shadow-brand hover:shadow-elegant transition-all duration-500">
+                <button type="submit" className="mt-4 inline-flex items-center justify-center gap-3 bg-gradient-brand text-ink px-8 py-4 rounded-full text-base font-medium shadow-brand hover:shadow-elegant transition-all duration-500 cursor-pointer">
                   Submit Application <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
@@ -236,7 +228,9 @@ function Field({
 }) {
   return (
     <div>
-      <label className="eyebrow block mb-2">{label}</label>
+      <label className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
+        {label}
+      </label>
       <input
         type={type}
         name={name}
@@ -244,7 +238,7 @@ function Field({
         value={value}
         onChange={onChange}
         maxLength={200}
-        className="w-full px-4 py-3 bg-background border border-border rounded-sm focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
+        className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
       />
     </div>
   );

@@ -72,47 +72,32 @@ const values = [
 ];
 
 function About() {
-  const { scrollYProgress } = useScroll();
-
-  const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
-  const heroTranslateZ = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
-
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothRotateX = useSpring(heroRotateX, springConfig);
-  const smoothTranslateZ = useSpring(heroTranslateZ, springConfig);
-  const smoothScale = useSpring(heroScale, springConfig);
-
   return (
     <>
       <Floating3DBackground />
-      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain" style={{ perspective: "1500px" }}>
+      <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden grain">
         <div className="absolute inset-0 opacity-30">
           <img src={heroImg} alt="" className="w-full h-full object-cover" width={1920} height={1280} />
         </div>
-        <motion.div
-          style={{
-            rotateX: smoothRotateX,
-            translateZ: smoothTranslateZ,
-            scale: smoothScale,
-            transformStyle: "preserve-3d"
-          }}
-          className="mx-auto section-container relative"
-        >
+        <div className="mx-auto section-container relative">
           <GSAPReveal>
-            <span className="eyebrow text-accent">Let's Tell You Who We Are</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Let's Tell You Who We Are
+            </span>
             <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
               Built for those looking to <span className="text-gradient-brand">invest</span>, <span className="text-gradient-brand">grow</span>, or <span className="text-gradient-brand">partner</span>
             </h1>
           </GSAPReveal>
-        </motion.div>
+        </div>
       </section>
 
-      <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-muted/20">
+      <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-background">
         <div className="mx-auto section-container grid md:grid-cols-2 gap-12">
-          <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full">
+          <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
             <Target className="w-8 h-8 text-accent mb-6" />
-            <span className="eyebrow text-accent">Our Vision</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Our Vision
+            </span>
             <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
               To shape the future of capital deployment
             </h2>
@@ -120,9 +105,11 @@ function About() {
               Building a platform where every decision compounds into enduring value and long-horizon growth through clarity and discipline.
             </p>
           </Reveal3D>
-          <Reveal3D delay={120} className="p-10 border border-border rounded-3xl bg-card h-full">
+          <Reveal3D delay={120} className="p-10 border border-border rounded-3xl bg-card h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
             <Compass className="w-8 h-8 text-accent mb-6" />
-            <span className="eyebrow text-accent">Our Mission</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Our Mission
+            </span>
             <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
               To convert vision into velocity
             </h2>
@@ -133,15 +120,17 @@ function About() {
         </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/40 border-y border-border">
         <div className="mx-auto section-container">
           <Reveal>
-            <span className="eyebrow text-accent">Our Core Values</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+              Our Core Values
+            </span>
             <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-2xl leading-[1.15]">The principles that guide every decision</h2>
           </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {values.map((v, i) => (
-              <Reveal3D key={i} delay={i * 70} className="bg-background p-8 group h-full">
+              <Reveal3D key={i} delay={i * 70} className="bg-background border border-border rounded-3xl p-8 group h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
                 <v.icon className="w-7 h-7 text-accent mb-5 group-hover:scale-110 transition-transform duration-500" />
                 <h3 className="font-display text-2xl mb-2">{v.t}</h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{v.d}</p>
@@ -151,7 +140,7 @@ function About() {
         </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/30">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-background border-b border-border">
         <div className="mx-auto section-container grid md:grid-cols-3 gap-8 lg:gap-10">
           <GSAPReveal className="h-full">
             <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
@@ -240,10 +229,12 @@ function About() {
         </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-muted/40 border-y border-border">
         <div className="mx-auto section-container">
           <Reveal>
-            <span className="eyebrow text-accent">Leadership</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+              Leadership
+            </span>
             <h2 className="font-display text-4xl md:text-5xl mt-4 mb-20 max-w-2xl leading-[1.15]">
               Seasoned leaders, one shared conviction
             </h2>
@@ -253,10 +244,12 @@ function About() {
         </div>
       </section>
 
-      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-muted/20">
+      <section className="pt-16 lg:pt-20 pb-24 lg:pb-32 bg-background border-t border-border">
         <div className="mx-auto max-w-4xl section-container text-center">
           <Reveal3D>
-            <span className="eyebrow text-accent">Before you move forward</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+              Before you move forward
+            </span>
             <h2 className="font-display text-4xl md:text-5xl mt-6 mb-8 font-semibold leading-[1.15]">
               We don’t believe in empty promises or aggressive sales pitches
             </h2>
@@ -295,7 +288,7 @@ function LeadershipGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={`group flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500 overflow-hidden relative cursor-pointer ${
+            className={`group flex flex-col p-8 lg:p-10 border border-border rounded-3xl bg-card hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/40 hover:-translate-y-1 transition-all duration-500 overflow-hidden relative cursor-pointer ${
               i === 0 ? 'md:col-span-2' : ''
             }`}
             onClick={() => setSelectedLeader(l)}
