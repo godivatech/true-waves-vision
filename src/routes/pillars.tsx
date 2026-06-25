@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
-import { Building2, Handshake, LineChart, Sparkles, Compass, HardHat, ArrowRight, MousePointer2 } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { Building2, Handshake, LineChart, Sparkles, Compass, HardHat, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import { pillars } from "@/data/pillars";
@@ -29,227 +28,225 @@ const icons = [Building2, Handshake, LineChart, Sparkles, Compass, HardHat];
 const images = [realtyBg, associatesBg, valuatorsBg, enterpriseBg, scaffoldingBg, geoAeroBg];
 
 function Pillars() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Track vertical scroll progress for the horizontal translation
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-  });
-
-  // Map vertical scroll (0 to 1) to horizontal movement
-  // We have 5 pillars, so we want to scroll through them.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-  const smoothX = useSpring(x, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (!hash) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute("data-index") || "0", 10);
+            setActiveIdx(index);
+          }
+        });
+      },
+      {
+        rootMargin: "-25% 0px -50% 0px",
+        threshold: 0.1,
+      }
+    );
 
-      const index = pillars.findIndex((p) => p.id === hash);
-      if (index === -1) return;
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
 
-      // Delay slightly to allow layout and resources to load
-      const timer = setTimeout(() => {
-        if (containerRef.current) {
-          const rect = containerRef.current.getBoundingClientRect();
-          const containerTop = window.scrollY + rect.top;
-          const scrollableHeight = containerRef.current.scrollHeight - window.innerHeight;
-          const targetScrollY = containerTop + (index / 4) * scrollableHeight;
-
-          window.scrollTo({
-            top: targetScrollY,
-            behavior: "smooth",
-          });
-        }
-      }, 300);
-
-      return () => clearTimeout(timer);
+    return () => {
+      cardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
     };
-
-    handleHashChange();
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   return (
-    <div className="bg-ink selection:bg-accent selection:text-white">
+    <div className="bg-background selection:bg-accent selection:text-white min-h-screen">
       <Floating3DBackground />
 
-      {/* Cinematic Hero: Sets the stage */}
-      <section className="relative h-[90vh] flex flex-col justify-center bg-gradient-hero text-primary-foreground px-6 lg:px-10 overflow-hidden">
+      <section className="relative pt-40 pb-20 bg-gradient-to-b from-muted/50 to-background border-b border-border/40 overflow-hidden grain">
         <div className="mx-auto section-container w-full relative z-10">
           <Reveal>
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-3 mb-4">
               <div className="h-[1px] w-12 bg-accent/60" />
-              <span className="eyebrow text-accent tracking-[0.3em]">The Ecosystem</span>
+              <span className="eyebrow text-accent tracking-[0.25em] uppercase">Our Ecosystem</span>
             </div>
-            <h1 className="font-display text-[8vw] lg:text-[5.5rem] leading-[1] font-bold tracking-tighter mb-10">
-              FIVE <br />
-              <span className="text-gradient-brand">PILLARS</span>
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-bold tracking-tighter text-foreground mb-6">
+              THE FIVE <span className="text-gradient-brand">PILLARS</span>
             </h1>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-              <p className="max-w-xl text-base md:text-lg opacity-60 leading-relaxed font-light">
-                Expertise, focus, and synergy — a world-class integrated platform designed to handle every dimension of high-value development and investment.
-              </p>
-              <div className="flex items-center gap-4 text-accent/80 animate-pulse">
-                <MousePointer2 className="w-5 h-5 rotate-180" />
-                <span className="text-sm font-bold tracking-widest uppercase">Scroll to explore</span>
-              </div>
-            </div>
+            <p className="max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed font-normal">
+              An integrated conglomerate platform delivering expertise and excellence across real estate development, property valuation, trading, scaffolding, and partner services.
+            </p>
           </Reveal>
         </div>
 
-        {/* Abstract background numbers */}
-        <div className="absolute -bottom-20 -right-20 font-display text-[30vw] font-black text-white/[0.02] leading-none select-none pointer-events-none">
+        <div className="absolute -bottom-16 -right-16 font-display text-[25vw] font-black text-muted/10 leading-none select-none pointer-events-none">
           05
         </div>
       </section>
 
-      {/* Horizontal Scroll Section */}
-      {/* Tall container provides the "scroll length" */}
-      <div ref={containerRef} className="relative h-[600vh] bg-ink">
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          <motion.div style={{ x: smoothX }} className="flex h-full">
+      <section className="relative z-10 border-b border-border/40">
+        <div className="grid lg:grid-cols-12 items-stretch">
+          
+          <div className="hidden lg:block lg:col-span-5 sticky top-[80px] h-[calc(100vh-80px)] overflow-hidden bg-muted">
+            {images.map((img, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  activeIdx === idx ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
+                }`}
+              >
+                <img
+                  src={img}
+                  alt={pillars[idx]?.name || "Showcase"}
+                  className="w-full h-full object-cover transition-transform duration-700"
+                />
+              </div>
+            ))}
+
+            <div className="absolute left-8 bottom-8 z-20 bg-background/90 backdrop-blur-md px-4 py-2.5 border border-border/50 rounded-2xl shadow-lg flex items-center gap-3">
+              <span className="font-display font-black text-sm text-accent">
+                0{activeIdx + 1}
+              </span>
+              <div className="h-4 w-[1px] bg-border" />
+              <span className="text-[10px] font-bold tracking-wider text-foreground uppercase">
+                {pillars[activeIdx]?.name}
+              </span>
+            </div>
+
+            <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3.5 z-20">
+              {pillars.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    const element = document.getElementById(pillars[idx].id);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                  }}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    activeIdx === idx 
+                      ? "bg-accent scale-125 shadow-[0_0_10px_rgba(58,190,249,0.8)]" 
+                      : "bg-white/50 backdrop-blur-sm border border-black/15 hover:bg-white"
+                  }`}
+                  aria-label={`Scroll to Pillar ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="col-span-12 lg:col-span-7 bg-background">
             {pillars.map((p, i) => {
               const Icon = icons[i];
               return (
-                <section
+                <div
                   key={p.id}
-                  className="relative w-screen h-screen flex-shrink-0 flex items-center justify-center p-6 lg:p-20 overflow-hidden"
+                  id={p.id}
+                  data-index={i}
+                  ref={(el) => (cardRefs.current[i] = el)}
+                  onMouseEnter={() => setActiveIdx(i)}
+                  className={`px-6 md:px-12 py-20 lg:py-32 border-b border-border/40 last:border-none flex flex-col justify-center transition-colors duration-500 ${
+                    activeIdx === i ? "bg-muted/10" : ""
+                  }`}
                 >
-                  {/* Background Image with Parallax */}
-                  <div className="absolute inset-0 z-0">
-                    <img
-                      src={images[i]}
-                      alt=""
-                      className="w-full h-full object-cover opacity-30 grayscale brightness-75 scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-ink" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink" />
-                  </div>
-
-                  {/* Background Index Number */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[40vw] font-black text-white/[0.03] select-none leading-none z-0">
-                    0{i + 1}
-                  </div>
-
-                  <div className="mx-auto section-container w-full grid lg:grid-cols-2 gap-20 items-center relative z-10">
-                    {/* Content Left */}
-                    <div className="flex flex-col items-start">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                      >
-                        <span className="eyebrow text-accent mb-6 block tracking-[0.2em]">{p.tagline}</span>
-                        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[1.1] font-bold text-white mb-8">
-                          {p.externalLink ? (
-                            <a
-                              href={p.externalLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:text-accent transition-colors duration-300"
-                            >
-                              {p.name.split(' ').map((word, idx, arr) => (
-                                <span key={idx} className={idx > 1 ? "text-accent" : ""}>
-                                  {word}
-                                  {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
-                                </span>
-                              ))}
-                            </a>
-                          ) : (
-                            p.name.split(' ').map((word, idx, arr) => (
-                              <span key={idx} className={idx > 1 ? "text-accent" : ""}>
-                                {word}
-                                {idx === 1 && arr.length > 2 ? <br className="hidden lg:block" /> : idx < arr.length - 1 ? " " : ""}
-                              </span>
-                            ))
-                          )}
-                        </h2>
-                        <p className="text-xl text-white/60 leading-relaxed mb-12 max-w-lg">
-                          {p.description}
-                        </p>
-
-                        <div className="flex flex-wrap gap-6">
-                          <Link
-                            to="/contact"
-                            className="btn-primary text-lg shadow-xl"
-                          >
-                            Enquire Now
-                          </Link>
-                          {p.externalLink && (
-                            <a
-                              href={p.externalLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="group flex items-center gap-3 text-white font-semibold hover:text-accent transition-all"
-                            >
-                              Visit Website <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                            </a>
-                          )}
-                        </div>
-                      </motion.div>
+                  <Reveal>
+                    <div className="block lg:hidden w-full aspect-[16/10] rounded-3xl overflow-hidden border border-border/80 shadow-md mb-8 relative">
+                      <img
+                        src={images[i]}
+                        alt={p.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md border border-border/50 flex items-center justify-center font-display font-bold text-accent text-xs shadow-sm select-none">
+                        0{i + 1}
+                      </div>
                     </div>
 
-                    {/* Content Right: Grids */}
-                    <div className="hidden lg:grid gap-12">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent shrink-0">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="text-xs font-bold tracking-wider text-accent uppercase bg-accent/5 px-3.5 py-1 border border-accent/15 rounded-full">
+                        {p.tagline}
+                      </span>
+                    </div>
+
+                    <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+                      {p.name}
+                    </h2>
+
+                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 font-normal">
+                      {p.description}
+                    </p>
+
+                    <div className="space-y-10">
                       {Object.entries(p).map(([key, value]) => {
                         if (Array.isArray(value)) {
                           const title = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
                           return (
-                            <motion.div
-                              key={key}
-                              initial={{ opacity: 0, x: 20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.8, delay: 0.4 }}
-                            >
-                              <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                                  <Icon className="w-5 h-5 text-accent" />
-                                </div>
-                                <h4 className="font-display text-xl font-bold tracking-wide uppercase text-white/80">{title}</h4>
-                              </div>
-                              <ul className="grid gap-4 pl-16">
+                            <div key={key} className="space-y-4">
+                              <h4 className="text-xs uppercase tracking-[0.15em] text-accent font-extrabold">{title}</h4>
+                              <div className="grid sm:grid-cols-2 gap-4">
                                 {value.map((item, idx) => (
-                                  <li key={idx} className="text-lg text-white/40 flex items-start gap-4 group/item hover:text-white transition-colors duration-300">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 opacity-20 group-hover/item:opacity-100 transition-opacity shadow-[0_0_10px_rgba(var(--accent-rgb),0.5)]" />
-                                    <span>{item}</span>
-                                  </li>
+                                  <div
+                                    key={idx}
+                                    className="flex items-start gap-3 p-5 md:p-6 rounded-2xl bg-card border border-border/60 shadow-sm hover:border-accent/25 hover:shadow-md transition-all duration-300"
+                                  >
+                                    <div className="w-2 h-2 rounded-full bg-accent mt-2.5 shrink-0 shadow-[0_0_6px_rgba(var(--accent-rgb),0.4)]" />
+                                    <span className="text-sm md:text-base font-semibold text-foreground/90 leading-relaxed">
+                                      {item}
+                                    </span>
+                                  </div>
                                 ))}
-                              </ul>
-                            </motion.div>
+                              </div>
+                            </div>
                           );
                         }
                         return null;
                       })}
                     </div>
-                  </div>
-                </section>
+
+                    <div className="flex flex-wrap gap-4 border-t border-border/40 pt-10 mt-10">
+                      <Link
+                        to="/contact"
+                        className="btn-primary py-3.5 px-8 text-sm font-bold rounded-full shadow-lg"
+                      >
+                        Enquire Now
+                      </Link>
+                      {p.externalLink && (
+                        <a
+                          href={p.externalLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-accent/80 transition-colors py-3.5 px-7 rounded-full border border-accent/20 hover:bg-accent/5"
+                        >
+                          Visit Website <ArrowRight className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
+                  </Reveal>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Final Transition CTA */}
-      <section className="relative pt-32 lg:pt-48 pb-32 lg:pb-48 bg-ink text-white text-center overflow-hidden border-t border-white/5">
+      <section className="relative py-28 bg-ink text-white text-center overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-accent/20 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2" />
         </div>
-
+        
         <div className="mx-auto max-w-4xl px-6 relative z-10">
           <Reveal>
             <span className="eyebrow text-accent mb-8 block tracking-[0.4em] uppercase">The Future of Growth</span>
-            <h2 className="font-display text-4xl md:text-6xl font-bold mb-10 leading-[1] tracking-tighter">
+            <h2 className="font-display text-4xl md:text-6xl font-bold mb-10 leading-[1.1] tracking-tighter">
               READY TO <br />
               <span className="text-gradient-brand italic">COLLABORATE?</span>
             </h2>
             <Link
               to="/contact"
-              className="btn-primary text-xl font-bold py-6 px-12 hover:scale-105"
+              className="btn-primary text-base font-bold py-4 px-10 hover:scale-105"
             >
-              Start Conversation <ArrowRight className="w-6 h-6" />
+              Start Conversation <ArrowRight className="w-5 h-5" />
             </Link>
           </Reveal>
         </div>
