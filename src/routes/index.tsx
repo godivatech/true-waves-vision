@@ -462,11 +462,11 @@ function Home() {
       </Section>
 
       {/* PARTNER CTA */}
-      <section className="pt-24 lg:pt-32 pb-32 lg:pb-40 bg-ink text-primary-foreground relative overflow-hidden grain">
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-ink text-primary-foreground relative overflow-hidden grain">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[600px] bg-accent/5 blur-[160px] rounded-full pointer-events-none" />
 
         <div className="mx-auto section-container relative z-10">
-          <div className="text-center mb-20 lg:mb-28">
+          <div className="text-center mb-12 lg:mb-16">
             <Reveal>
               <span className="eyebrow text-accent/80 mb-6 block">Strategic Collaboration</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-8">
@@ -506,7 +506,7 @@ function Home() {
               }
             ].map((path, idx) => (
               <Reveal3D key={path.id} delay={idx * 100}>
-                <div className="group relative h-[500px] rounded-4xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-accent/30 transition-all duration-700">
+                <div className="group relative h-[380px] rounded-4xl overflow-hidden border border-white/5 bg-white/[0.02] hover:border-accent/30 transition-all duration-700">
                   <div className="absolute inset-0 z-0">
                     <img
                       src={path.image}
@@ -516,19 +516,19 @@ function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-transparent" />
                   </div>
 
-                  <div className="relative z-10 h-full p-10 flex flex-col justify-end">
-                    <div className="mb-6">
-                      <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500">
+                  <div className="relative z-10 h-full p-8 flex flex-col justify-end">
+                    <div className="mb-4">
+                      <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500">
                         <path.icon className="w-7 h-7" />
                       </div>
                       <span className="text-[10px] uppercase tracking-[0.3em] text-accent mb-2 block">{path.tag}</span>
-                      <h3 className="font-display text-3xl font-bold text-white mb-4">{path.title}</h3>
-                      <p className="text-white/50 leading-relaxed group-hover:text-white/80 transition-colors duration-500">
+                      <h3 className="font-display text-2xl font-bold text-white mb-3">{path.title}</h3>
+                      <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-500">
                         {path.desc}
                       </p>
                     </div>
 
-                    <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                    <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                       <Link to="/contact" className="text-sm font-bold text-white hover:text-accent transition-colors flex items-center gap-2">
                         Get Started <ArrowRight className="w-4 h-4" />
                       </Link>
@@ -539,7 +539,7 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-32 text-center">
+          <div className="mt-16 text-center">
             <Reveal>
               <div className="inline-block px-10 py-6 border border-white/10 rounded-full backdrop-blur-sm text-lg text-primary-foreground/40 italic max-w-3xl">
                 "Growth is better when it’s built together. Let’s create long-term value, not just transactions."
