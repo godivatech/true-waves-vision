@@ -161,14 +161,14 @@ function About() {
       <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-background border-b border-border">
         <div className="mx-auto section-container grid md:grid-cols-3 gap-8 lg:gap-10">
           <GSAPReveal className="h-full">
-            <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
+            <div className="h-full flex flex-col p-8 lg:p-10 border border-border rounded-4xl bg-card hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">
                 <Layers className="w-7 h-7 text-accent" />
               </div>
-              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold">What do we actually do?</h3>
+              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold text-foreground">What do we actually do?</h3>
               <div className="text-muted-foreground leading-relaxed flex-grow">
-                <p className="mb-6 font-medium text-foreground/80">Five powerful verticals working in synergy:</p>
-                <ul className="space-y-4">
+                <p className="mb-6 font-medium text-foreground/80 text-sm">Five powerful verticals working in synergy:</p>
+                <div className="space-y-3">
                   {[
                     "Real Estate Development",
                     "Engineering & Project Execution",
@@ -176,15 +176,15 @@ function About() {
                     "Skilled Manpower & Support",
                     "Scaffolding & Formwork"
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm lg:text-base">
-                      <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
+                    <div key={item} className="flex items-center gap-3 py-2.5 px-4 rounded-2xl bg-muted/30 border border-border/50 hover:border-accent/30 hover:bg-muted/50 transition-all duration-300">
+                      <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                      <span className="text-sm font-medium text-foreground/90">{item}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="mt-10 pt-8 border-t border-border/50">
-                <p className="font-semibold text-accent leading-snug">
+              <div className="mt-8 p-5 rounded-2xl bg-accent/5 border border-accent/10">
+                <p className="text-xs font-semibold text-accent leading-relaxed">
                   Because it means you don’t deal with multiple companies—we handle everything under one roof.
                 </p>
               </div>
@@ -192,36 +192,38 @@ function About() {
           </GSAPReveal>
 
           <GSAPReveal delay={100} className="h-full">
-            <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
+            <div className="h-full flex flex-col p-8 lg:p-10 border border-border rounded-4xl bg-card hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">
                 <Zap className="w-7 h-7 text-accent" />
               </div>
-              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold">What makes us different?</h3>
+              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold text-foreground">What makes us different?</h3>
               <div className="text-muted-foreground leading-relaxed flex-grow">
-                <p className="text-lg lg:text-xl font-medium text-foreground/80 mb-6 italic leading-relaxed">
-                  "Real growth comes from trust, clarity, and smart decisions—not just promises."
-                </p>
-                <p className="leading-relaxed">
+                <div className="border-l-2 border-accent pl-4 my-6">
+                  <p className="text-base lg:text-lg font-medium text-foreground/90 italic leading-relaxed">
+                    "Real growth comes from trust, clarity, and smart decisions—not just promises."
+                  </p>
+                </div>
+                <p className="leading-relaxed text-sm lg:text-base text-muted-foreground">
                   That’s why we focus on transparent communication, data-driven insights, long-term relationships, and real, measurable outcomes. We bridge the gap between abstract vision and tangible velocity.
                 </p>
               </div>
-              <div className="mt-10 pt-8 border-t border-border/50">
-                <div className="flex items-center gap-2 text-accent font-bold tracking-widest uppercase text-xs">
+              <div className="mt-auto pt-8">
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-accent/10 text-accent font-bold tracking-wider uppercase text-[10px] border border-accent/20">
                   The True Waves Edge
-                </div>
+                </span>
               </div>
             </div>
           </GSAPReveal>
 
           <GSAPReveal delay={200} className="h-full">
-            <div className="h-full flex flex-col p-8 lg:p-10 border border-border/50 rounded-3xl bg-card shadow-sm hover:shadow-elegant transition-all duration-500">
-              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
+            <div className="h-full flex flex-col p-8 lg:p-10 border border-border rounded-4xl bg-card hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">
                 <Trophy className="w-7 h-7 text-accent" />
               </div>
-              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold">What have we achieved?</h3>
+              <h3 className="font-display text-2xl lg:text-3xl mb-6 font-bold text-foreground">What have we achieved?</h3>
               <div className="text-muted-foreground leading-relaxed flex-grow">
-                <p className="mb-6 font-medium text-foreground/80">A track record built on consistency and professional recognition:</p>
-                <ul className="space-y-5">
+                <p className="mb-6 font-medium text-foreground/80 text-sm">A track record built on consistency and professional recognition:</p>
+                <div className="space-y-4">
                   {[
                     { t: "ISO 9001:2015 Certified", s: "Operational excellence" },
                     { t: "TOI Trendsetter 2024", s: "Award-winning leadership" },
@@ -229,18 +231,19 @@ function About() {
                     { t: "Approved IBBI Valuer", s: "Professional standards" },
                     { t: "Trusted by 50+ Partners", s: "Proven network" }
                   ].map((item) => (
-                    <li key={item.t} className="flex items-start gap-4">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0" />
+                    <div key={item.t} className="flex items-center justify-between pb-3.5 border-b border-border/50 last:border-0 last:pb-0">
                       <div>
-                        <div className="text-foreground font-semibold leading-none mb-1">{item.t}</div>
-                        <div className="text-xs uppercase tracking-widest opacity-60 font-bold">{item.s}</div>
+                        <div className="text-sm font-semibold text-foreground leading-tight">{item.t}</div>
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mt-0.5">{item.s}</div>
                       </div>
-                    </li>
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent/40 shrink-0 ml-4" />
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-              <div className="mt-10 pt-8 border-t border-border/50">
-                <div className="font-display text-3xl font-black text-accent">18+ YEARS</div>
+              <div className="mt-auto pt-8 flex items-baseline gap-2">
+                <span className="text-3xl font-display font-extrabold text-gradient-brand">18+ Years</span>
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">of Proven Success</span>
               </div>
             </div>
           </GSAPReveal>
