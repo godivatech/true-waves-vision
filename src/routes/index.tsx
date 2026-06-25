@@ -461,40 +461,6 @@ function Home() {
 
       </Section>
 
-      {/* PRESENCE */}
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-48 bg-muted/30">
-        <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
-          <Reveal>
-            <span className="eyebrow text-accent">Our Presence & Visibility</span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Positioned Where Growth Happens</h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
-              True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
-            </p>
-            <div className="mt-10 space-y-6">
-              {[
-                { t: "Strategic Locations", d: "Active across Tier 1 and high-growth Tier 2 cities in Tamil Nadu (Chennai, Coimbatore, Madurai, Trichy)." },
-                { t: "Future-Ready Land Holdings", d: "Positioned in upcoming corridors with strong appreciation potential." },
-                { t: "On-Ground Accessibility", d: "Operational offices in West Mambalam (Chennai) & Narimedu (Madurai)." },
-                { t: "Strong Institutional Network", d: "Connected with banks, NBFCs, government bodies & private institutions." },
-              ].map((item) => (
-                <div key={item.t} className="flex gap-4">
-                  <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-accent mt-2" />
-                  <div>
-                    <div className="font-display font-semibold text-foreground">{item.t}</div>
-                    <div className="text-muted-foreground text-sm">{item.d}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="relative flex items-center justify-center lg:translate-y-12">
-              <img src={mapImg} alt="India presence map" className="w-full h-auto max-w-2xl" loading="lazy" />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* PARTNER CTA */}
       <section className="pt-24 lg:pt-32 pb-32 lg:pb-40 bg-ink text-primary-foreground relative overflow-hidden grain">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[600px] bg-accent/5 blur-[160px] rounded-full pointer-events-none" />
@@ -580,6 +546,40 @@ function Home() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* PRESENCE */}
+      <section className="pt-12 lg:pt-16 pb-24 lg:pb-48 bg-muted/30">
+        <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+          <Reveal>
+            <span className="eyebrow text-accent">Our Presence & Visibility</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Positioned Where Growth Happens</h2>
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
+              True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
+            </p>
+            <div className="mt-10 space-y-6">
+              {[
+                { t: "Strategic Locations", d: "Active across Tier 1 and high-growth Tier 2 cities in Tamil Nadu (Chennai, Coimbatore, Madurai, Trichy)." },
+                { t: "Future-Ready Land Holdings", d: "Positioned in upcoming corridors with strong appreciation potential." },
+                { t: "On-Ground Accessibility", d: "Operational offices in West Mambalam (Chennai) & Narimedu (Madurai)." },
+                { t: "Strong Institutional Network", d: "Connected with banks, NBFCs, government bodies & private institutions." },
+              ].map((item) => (
+                <div key={item.t} className="flex gap-4">
+                  <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-accent mt-2" />
+                  <div>
+                    <div className="font-display font-semibold text-foreground">{item.t}</div>
+                    <div className="text-muted-foreground text-sm">{item.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="relative flex items-center justify-center lg:translate-y-24">
+              <img src={mapImg} alt="India presence map" className="w-full h-auto max-w-2xl" loading="lazy" />
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
