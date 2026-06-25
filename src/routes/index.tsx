@@ -238,9 +238,8 @@ function Home() {
             </h1>
           </Reveal>
           <Reveal delay={300}>
-            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed text-balance">
-              South India's premier multi-sector group delivering excellence across real estate,
-              valuation, and enterprise development. Built for growth.
+            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed">
+              South India's premier multi-sector group delivering excellence across real estate, valuation, and enterprise.
             </p>
           </Reveal>
           <GSAPReveal delay={450}>
