@@ -52,7 +52,7 @@ function InteractivePillarsSection() {
             <div>
               <span className="eyebrow text-accent">Our Five Pillars</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 leading-tight font-semibold text-foreground">
-                One Group, Five Enterprises
+                One Group - Five Enterprises
               </h2>
             </div>
             <p className="text-lg text-muted-foreground max-w-md">
