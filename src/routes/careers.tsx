@@ -64,12 +64,11 @@ function Careers() {
         >
           <Reveal>
             <span className="eyebrow text-accent">Careers at True Waves Group</span>
-            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] text-balance font-semibold">
-              Don’t Just Look for a Job<br /> <span className="text-gradient-brand">Build Something That Matters</span>
+            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
+              Build a Career <span className="text-gradient-brand">That Matters</span>
             </h1>
-            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed">
-              If you're someone who wants more than a routine job—you're in the right place.
-              At True Waves Group, we work on real projects, real challenges, and real growth.
+            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-85 leading-relaxed">
+              We work on real projects, solve real challenges, and drive real growth. Discover your next opportunity here.
             </p>
           </Reveal>
         </motion.div>

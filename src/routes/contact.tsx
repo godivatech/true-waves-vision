@@ -46,11 +46,11 @@ function Contact() {
         >
           <Reveal>
             <span className="eyebrow text-accent">Get in Touch</span>
-            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] text-balance font-semibold">
-              Tell Us What You’re Looking For — <span className="text-gradient-brand">We’ll Help You Get There</span>
+            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
+              Let's connect and <span className="text-gradient-brand">build together</span>
             </h1>
-            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed">
-              Invest, Partner, Grow — Every conversation matters.
+            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-85 leading-relaxed">
+              Whether you want to invest, partner, or grow—every conversation matters.
             </p>
           </Reveal>
         </motion.div>

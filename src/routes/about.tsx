@@ -101,8 +101,8 @@ function About() {
         >
           <GSAPReveal>
             <span className="eyebrow text-accent">Let's Tell You Who We Are</span>
-            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] text-balance font-semibold">
-              If you’re here, you’re probably looking for the right place to <span className="text-gradient-brand">invest</span> <span className="text-gradient-brand">grow</span> or <span className="text-gradient-brand">partner</span>
+            <h1 className="font-display text-4xl md:text-6xl mt-6 max-w-4xl leading-[1.1] font-semibold">
+              Built for those looking to <span className="text-gradient-brand">invest</span>, <span className="text-gradient-brand">grow</span>, or <span className="text-gradient-brand">partner</span>
             </h1>
           </GSAPReveal>
         </motion.div>
