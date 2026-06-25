@@ -324,15 +324,15 @@ function Home() {
         </div>
       </Section>
 
-      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-ink text-primary-foreground overflow-hidden">
+      <section className="relative pt-24 lg:pt-32 pb-32 lg:pb-40 bg-background text-foreground overflow-hidden border-t border-border">
         {/* Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] bg-accent/10 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] bg-accent/5 blur-[140px] rounded-full pointer-events-none" />
 
         <div className="mx-auto section-container relative z-10">
           <div className="text-center mb-24 lg:mb-32">
             <Reveal>
-              <span className="eyebrow text-accent/80 mb-6 block">Investment Intelligence</span>
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-10">
+              <span className="eyebrow text-accent mb-6 block">Investment Intelligence</span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-10 text-foreground">
                 Smart Investments, <span className="text-gradient-brand italic">Secure Growth</span>
               </h2>
             </Reveal>
@@ -344,12 +344,12 @@ function Home() {
               <Reveal delay={200}>
                 <div className="relative aspect-square flex items-center justify-center">
                   <div className="absolute inset-0 bg-accent/5 rounded-full blur-[100px] animate-pulse" />
-                  <div className="absolute inset-4 border border-white/5 rounded-full" />
-                  <div className="absolute inset-12 border border-white/10 rounded-full" />
+                  <div className="absolute inset-4 border border-black/5 rounded-full" />
+                  <div className="absolute inset-12 border border-black/10 rounded-full" />
                   <motion.img
                     src={investImg}
                     alt="Investment Growth"
-                    className="relative w-4/5 h-4/5 object-contain z-10 drop-shadow-[0_0_50px_rgba(3,169,244,0.2)]"
+                    className="relative w-4/5 h-4/5 object-contain z-10 drop-shadow-[0_0_50px_rgba(3,169,244,0.15)]"
                     animate={{ 
                       y: [0, -20, 0],
                       rotate: [0, 2, 0]
@@ -374,12 +374,12 @@ function Home() {
                   { t: "Direct Expert Access", d: "Speak directly with professionals — no middle layers or automated responses." },
                 ].map((item, i) => (
                   <Reveal key={i} delay={i * 100}>
-                    <div className="h-full p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] hover:border-accent/40 transition-all duration-500 group">
-                      <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500">
+                    <div className="h-full p-8 rounded-3xl bg-card border border-border hover:bg-muted/50 hover:border-accent/40 transition-all duration-500 group shadow-sm">
+                      <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                         <span className="text-xs font-bold">0{i+1}</span>
                       </div>
-                      <h3 className="font-display text-xl font-bold text-white mb-3">{item.t}</h3>
-                      <p className="text-sm text-primary-foreground/50 leading-relaxed group-hover:text-primary-foreground/70 transition-colors">
+                      <h3 className="font-display text-xl font-bold text-foreground mb-3">{item.t}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                         {item.d}
                       </p>
                     </div>
@@ -391,11 +391,11 @@ function Home() {
                 <div className="mt-12 flex flex-wrap gap-6 items-center">
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
-                    className="px-10 py-5 bg-white text-accent font-bold text-lg hover:bg-accent hover:text-white transition-all duration-500 rounded-full shadow-lg shadow-white/5"
+                    className="px-10 py-5 bg-accent text-white font-bold text-lg hover:bg-accent/90 hover:scale-105 transition-all duration-500 rounded-full shadow-lg shadow-accent/15"
                   >
                     Talk to an Expert
                   </button>
-                  <Link to="/pillars" className="group flex items-center gap-2 text-white/60 font-semibold hover:text-white transition-all">
+                  <Link to="/pillars" className="group flex items-center gap-2 text-muted-foreground font-semibold hover:text-accent transition-all">
                     View Opportunities <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
