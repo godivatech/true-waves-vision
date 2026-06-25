@@ -126,7 +126,7 @@ function About() {
             <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
               Our Core Values
             </span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-2xl leading-[1.15]">The principles that guide every decision</h2>
+            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-16 max-w-4xl leading-[1.15]">The principles that guide every decision</h2>
           </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {values.map((v, i) => (
@@ -235,8 +235,8 @@ function About() {
             <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
               Leadership
             </span>
-            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-20 max-w-2xl leading-[1.15]">
-              Seasoned leaders, one shared conviction
+            <h2 className="font-display text-4xl md:text-5xl mt-4 mb-20 max-w-4xl leading-[1.15]">
+              Meet Our Leadership Team
             </h2>
           </Reveal>
 
