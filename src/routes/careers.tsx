@@ -65,10 +65,10 @@ function Careers() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left side: Premium Image Container */}
             <div className="lg:col-span-5 h-[350px] sm:h-[450px] lg:h-[580px] relative rounded-3xl overflow-hidden border border-border shadow-elegant group">
-              <img 
-                src={cultureImg} 
-                alt="Working at True Waves" 
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              <img
+                src={cultureImg}
+                alt="Working at True Waves"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent pointer-events-none" />
             </div>
@@ -152,10 +152,10 @@ function Careers() {
             <Reveal delay={100}>
               <ul className="space-y-6">
                 {[
-                   "You like taking ownership, not just following instructions",
-                   "You want to learn across industries, not stay limited to one role",
-                   "You’re looking for growth—not just a salary",
-                   "You want your work to actually make an impact"
+                  "You like taking ownership, not just following instructions",
+                  "You want to learn across industries, not stay limited to one role",
+                  "You’re looking for growth—not just a salary",
+                  "You want your work to actually make an impact"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-4 p-6 border border-border rounded-2xl bg-card hover-lift">
                     <div className="w-6 h-6 rounded-full bg-accent/20 text-accent flex items-center justify-center shrink-0 mt-0.5">
@@ -173,7 +173,7 @@ function Careers() {
       <section id="apply" className="pt-16 lg:pt-24 pb-24 lg:pb-32 bg-muted/40 border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left side: The application form (7 Columns) */}
             <div className="lg:col-span-7">
               <Reveal>
