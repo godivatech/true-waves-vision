@@ -306,14 +306,14 @@ function Home() {
       >
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
           {[
-            { icon: Sparkles, t: "One Powerful Ecosystem", d: "Five specialized verticals — real estate, valuation, enterprise, scaffolding & partnerships — working seamlessly to maximize your outcomes." },
-            { icon: Award, t: "Certified Quality You Can Rely On", d: "ISO 9001:2015 certified processes ensuring consistency, transparency, and international-standard execution." },
-            { icon: Shield, t: "100% Transparent Approach", d: "Clear communication, zero hidden costs, and complete clarity at every stage of your investment journey." },
-            { icon: Mountain, t: "Deep Market Expertise (15+ Years)", d: "Strong understanding of Tamil Nadu real estate trends, growth corridors, and investment potential." },
-            { icon: Users, t: "Leadership That Delivers", d: "A highly experienced leadership team with proven expertise across multiple industries." },
-            { icon: Handshake, t: "Trusted by 50+ Partners", d: "A growing network of investors, developers, and institutions who consistently choose us." },
-            { icon: TrendingUp, t: "Measurable Results", d: "In a market full of promises, we deliver results you can see and track." },
-            { icon: Compass, t: "Tailored Investment Strategies", d: "We don't believe in one-size-fits-all. Every partnership is customized to align with your unique financial goals and risk appetite." },
+            { icon: Sparkles, t: "Unified Ecosystem", d: "Five specialized verticals working together to maximize your business outcomes." },
+            { icon: Award, t: "Certified Quality", d: "ISO 9001:2015 certified processes ensuring consistent, international standards." },
+            { icon: Shield, t: "100% Transparency", d: "Clear communication and zero hidden costs at every stage of your journey." },
+            { icon: Mountain, t: "15+ Years Expertise", d: "Deep understanding of South India's real estate trends and growth corridors." },
+            { icon: Users, t: "Proven Leadership", d: "A highly experienced leadership team with cross-industry execution expertise." },
+            { icon: Handshake, t: "50+ Trusted Partners", d: "A growing network of investors and developers who consistently choose us." },
+            { icon: TrendingUp, t: "Measurable Outcomes", d: "No empty promises—we deliver clear, trackable, and reliable results." },
+            { icon: Compass, t: "Tailored Strategies", d: "Customized approaches to align with your unique financial goals and risk profile." },
           ].map((f, i) => (
             <Reveal3D key={i} delay={i * 80} className="bg-background p-10 group hover:bg-muted/40 transition-colors duration-500">
               <f.icon className="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform duration-500" />

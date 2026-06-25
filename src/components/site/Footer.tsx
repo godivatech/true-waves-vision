@@ -5,11 +5,11 @@ import { pillars } from "@/data/pillars";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground mt-32">
+    <footer className="bg-background text-foreground border-t border-border mt-32">
       <div className="mx-auto section-container py-20 grid gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
           <div className="flex items-center mb-8">
-            <div className="bg-white p-3 rounded-2xl shadow-xl inline-flex items-center justify-center">
+            <div className="bg-white p-3 rounded-2xl border border-border/60 shadow-sm inline-flex items-center justify-center">
               <img
                 src={logoImg}
                 alt="True Waves Group"
@@ -17,33 +17,32 @@ export function Footer() {
               />
             </div>
           </div>
-          <p className="text-base opacity-70 leading-relaxed max-w-xs">
+          <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
             Transforming industries into investment opportunities across India.
           </p>
         </div>
 
         <div>
-          <div className="eyebrow mb-4 text-primary-foreground/60">Explore</div>
+          <div className="eyebrow mb-4 text-accent font-semibold">Explore</div>
           <ul className="space-y-3 text-base">
-            <li><Link to="/about" className="opacity-80 hover:opacity-100 transition">About Us</Link></li>
-            <li><Link to="/pillars" className="opacity-80 hover:opacity-100 transition">Our Five Pillars</Link></li>
-            {/* <li><Link to="#" className="opacity-80 hover:opacity-100 transition">Blogs</Link></li> */}
-            <li><Link to="/careers" className="opacity-80 hover:opacity-100 transition">Careers</Link></li>
-            <li><Link to="/contact" className="opacity-80 hover:opacity-100 transition">Contact</Link></li>
+            <li><Link to="/about" className="text-muted-foreground hover:text-accent transition">About Us</Link></li>
+            <li><Link to="/pillars" className="text-muted-foreground hover:text-accent transition">Our Five Pillars</Link></li>
+            <li><Link to="/careers" className="text-muted-foreground hover:text-accent transition">Careers</Link></li>
+            <li><Link to="/contact" className="text-muted-foreground hover:text-accent transition">Contact</Link></li>
           </ul>
         </div>
 
         <div>
-          <div className="eyebrow mb-4 text-primary-foreground/60">Our Five Pillars</div>
-          <ul className="space-y-3 text-base opacity-80">
+          <div className="eyebrow mb-4 text-accent font-semibold">Our Five Pillars</div>
+          <ul className="space-y-3 text-base text-muted-foreground">
             {pillars.map((p) => (
               <li key={p.id}>
                 {p.externalLink ? (
-                  <a href={p.externalLink} target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  <a href={p.externalLink} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
                     {p.name}
                   </a>
                 ) : (
-                  <Link to="/pillars" hash={p.id} className="hover:text-white transition">
+                  <Link to="/pillars" hash={p.id} className="hover:text-accent transition">
                     {p.name}
                   </Link>
                 )}
@@ -53,18 +52,18 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="eyebrow mb-4 text-primary-foreground/60">Get in touch</div>
-          <ul className="space-y-4 text-sm">
+          <div className="eyebrow mb-4 text-accent font-semibold">Get in touch</div>
+          <ul className="space-y-4 text-sm text-muted-foreground">
             <li className="flex gap-3 items-start">
               <MapPin className="w-4 h-4 mt-1 text-accent shrink-0" />
               <span>
-                <strong>Chennai:</strong> 17/13, Easwaran Koil St, West Mambalam, Chennai – 600033
+                <strong className="text-foreground">Chennai:</strong> 17/13, Easwaran Koil St, West Mambalam, Chennai – 600033
               </span>
             </li>
             <li className="flex gap-3 items-start">
               <MapPin className="w-4 h-4 mt-1 text-accent shrink-0" />
               <span>
-                <strong>Madurai:</strong> No. 5, North St, Narimedu, Madurai – 625002
+                <strong className="text-foreground">Madurai:</strong> No. 5, North St, Narimedu, Madurai – 625002
               </span>
             </li>
             <li className="flex gap-3 items-center">
@@ -73,13 +72,13 @@ export function Footer() {
             </li>
             <li className="flex gap-3 items-center">
               <Mail className="w-4 h-4 text-accent shrink-0" />
-              <a href="mailto:info@truewavesgroup.com" className="hover:text-white transition">info@truewavesgroup.com</a>
+              <a href="mailto:info@truewavesgroup.com" className="hover:text-accent transition">info@truewavesgroup.com</a>
             </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto section-container py-6 flex flex-col md:flex-row gap-2 justify-between text-sm opacity-60">
+      <div className="border-t border-border">
+        <div className="mx-auto section-container py-6 flex flex-col md:flex-row gap-2 justify-between text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} True Waves Group. All rights reserved.</p>
           <p className="font-bold tracking-wider">
             DESIGNED AND DEVELOPED BY{" "}
@@ -87,7 +86,7 @@ export function Footer() {
               href="https://godivatech.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
+              className="hover:underline hover:text-accent"
             >
               GODIVATECH
             </a>
