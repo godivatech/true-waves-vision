@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Reveal, Reveal3D } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import { useLenis } from "lenis/react";
+import cultureImg from "@/assets/section images/2.png";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -58,7 +59,44 @@ function Careers() {
         </div>
       </section>
 
-      <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-background">
+      <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left side: Premium Image Container */}
+            <div className="lg:col-span-5 h-[350px] sm:h-[450px] lg:h-[580px] relative rounded-3xl overflow-hidden border border-border shadow-elegant group">
+              <img 
+                src={cultureImg} 
+                alt="Working at True Waves" 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Right side: Culture benefits grid */}
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+                  What It's Like To Work Here
+                </span>
+                <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 max-w-2xl leading-[1.15]">
+                  Not a corporate box<br />A place to grow
+                </h2>
+              </Reveal>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {benefits.map((b, i) => (
+                  <Reveal3D key={i} delay={i * 80} className="bg-background border border-border rounded-3xl p-8 h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+                    <b.icon className="w-7 h-7 text-accent mb-5" />
+                    <h3 className="font-display text-xl mb-2">{b.t}</h3>
+                    <p className="text-base text-muted-foreground leading-relaxed">{b.d}</p>
+                  </Reveal3D>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/40 border-y border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
@@ -93,26 +131,6 @@ function Careers() {
                   </div>
                 </div>
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pt-16 lg:pt-20 pb-16 lg:pb-20 bg-muted/40 border-y border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <Reveal>
-            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
-              What It's Like To Work Here
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl mt-4 mb-12 max-w-2xl leading-[1.15]">Not a corporate box<br />A place to grow</h2>
-          </Reveal>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {benefits.map((b, i) => (
-              <Reveal3D key={i} delay={i * 80} className="bg-background border border-border rounded-3xl p-8 h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
-                <b.icon className="w-7 h-7 text-accent mb-5" />
-                <h3 className="font-display text-xl mb-2">{b.t}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed">{b.d}</p>
-              </Reveal3D>
             ))}
           </div>
         </div>

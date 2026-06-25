@@ -94,24 +94,28 @@ function About() {
 
       <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-background">
         <div className="mx-auto section-container grid md:grid-cols-2 gap-12">
-          <Reveal3D className="p-10 border border-border rounded-3xl bg-card h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
-            <Target className="w-8 h-8 text-accent mb-6" />
-            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+          <Reveal3D className="p-10 border border-white/10 rounded-4xl bg-gradient-to-br from-ink via-ink/95 to-ink/90 text-primary-foreground h-full hover:shadow-2xl hover:shadow-accent/15 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+            <div className="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center mb-6 text-accent">
+              <Target className="w-6 h-6" />
+            </div>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/30 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/10 mb-4">
               Our Vision
             </span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
+            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15] text-white">
               To shape the future of capital deployment
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-white/70 leading-relaxed">
               Building a platform where every decision compounds into enduring value and long-horizon growth through clarity and discipline.
             </p>
           </Reveal3D>
-          <Reveal3D delay={120} className="p-10 border border-border rounded-3xl bg-card h-full hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
-            <Compass className="w-8 h-8 text-accent mb-6" />
-            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+          <Reveal3D delay={120} className="p-10 border border-accent/10 rounded-4xl bg-gradient-to-br from-accent/5 to-accent/10 text-foreground h-full hover:shadow-2xl hover:shadow-accent/25 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
+            <div className="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center mb-6 text-accent">
+              <Compass className="w-6 h-6" />
+            </div>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/30 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/10 mb-4">
               Our Mission
             </span>
-            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15]">
+            <h2 className="font-display text-3xl md:text-4xl mt-3 mb-5 font-semibold leading-[1.15] text-foreground">
               To convert vision into velocity
             </h2>
             <p className="text-muted-foreground leading-relaxed">
