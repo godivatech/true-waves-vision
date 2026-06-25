@@ -43,14 +43,16 @@ function InteractivePillarsSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-background text-foreground relative overflow-hidden border-y border-border">
+    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20 bg-muted/40 text-foreground relative overflow-hidden border-y border-border">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-accent/5 blur-[120px] rounded-full opacity-40 pointer-events-none" />
 
       <div className="mx-auto section-container relative z-10">
         <GSAPReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <div>
-              <span className="eyebrow text-accent">Our Five Pillars</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                Our Five Pillars
+              </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 leading-tight font-semibold text-foreground">
                 One Group - Five Enterprises
               </h2>
@@ -82,13 +84,11 @@ function InteractivePillarsSection() {
                 }}
                 initial={false}
                 animate={{
-                  flex: isActive ? '8 1 0%' : '1 1 0%',
-                  rotateY: isActive ? 0 : index % 2 === 0 ? 15 : -15,
-                  z: isActive ? 20 : 0
+                  flex: isActive ? '8 1 0%' : '1 1 0%'
                 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-[#0A1128] border border-white/5 hover:border-white/10"
-                style={{ transformStyle: "preserve-3d", willChange: "flex, transform" }}
+                style={{ willChange: "flex" }}
               >
                 {/* Background Image */}
                 <div
@@ -184,16 +184,8 @@ function InteractivePillarsSection() {
 function Home() {
   const { scrollYProgress } = useScroll();
 
-  // Hero Parallax & 3D Effects
-  const heroRotateX = useTransform(scrollYProgress, [0, 0.15], [0, 12]);
-  const heroTranslateZ = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.95]);
+  // Hero Parallax & Scroll Effects
   const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.8]);
-
-  const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
-  const smoothRotateX = useSpring(heroRotateX, springConfig);
-  const smoothTranslateZ = useSpring(heroTranslateZ, springConfig);
-  const smoothScale = useSpring(heroScale, springConfig);
 
   return (
     <>
@@ -215,13 +207,7 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A1128]/80 via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div
-          style={{
-            rotateX: smoothRotateX,
-            translateZ: smoothTranslateZ,
-            scale: smoothScale,
-            transformStyle: "preserve-3d"
-          }}
+        <div
           className="relative mx-auto section-container pb-20 pt-40 w-full"
         >
           <Reveal>
@@ -262,22 +248,22 @@ function Home() {
             <div><div className="font-display text-3xl font-semibold">18+</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Years of expertise</div></div>
             <div><div className="font-display text-3xl font-semibold">ISO 9001:2015</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Certified</div></div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* STRENGTH IN NUMBERS */}
-      <Section eyebrow="Our Strength in Numbers" title="18+ Years of Proven Excellence Across South India">
+      <Section eyebrow="Our Strength in Numbers" title="18+ Years of Proven Excellence Across South India" className="bg-background">
         <p className="-mt-8 mb-12 max-w-2xl text-muted-foreground leading-relaxed">
           Delivering reliable solutions since 2008 — built on trust, performance, and long-term relationships.
         </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {[
             { n: 18, s: "+", l: "Years of Proven Expertise" },
             { n: 20, s: "+", l: "Projects Delivered" },
             { n: 50, s: "+", l: "Strategic Partners" },
             { n: 5, s: "", l: "Business Pillars" },
           ].map((m, i) => (
-            <GSAPReveal key={i} delay={i * 100} className="bg-background p-10">
+            <GSAPReveal key={i} delay={i * 100} className="bg-background border border-border rounded-3xl p-8 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
               <div className="font-display text-5xl md:text-6xl text-foreground font-semibold">
                 <GSAPCounter to={m.n} suffix={m.s} />
               </div>
@@ -293,6 +279,7 @@ function Home() {
       {/* WHY CHOOSE US */}
       <Section 
         eyebrow="Why Choose True Waves Group" 
+        className="bg-muted/30 border-y border-border"
         title={
           <>
             <span className="opacity-40">Built for Trust</span>
@@ -303,7 +290,7 @@ function Home() {
           </>
         }
       >
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {[
             { icon: Sparkles, t: "Unified Ecosystem", d: "Five specialized verticals working together to maximize your business outcomes." },
             { icon: Award, t: "Certified Quality", d: "ISO 9001:2015 certified processes ensuring consistent, international standards." },
@@ -314,7 +301,7 @@ function Home() {
             { icon: TrendingUp, t: "Measurable Outcomes", d: "No empty promises—we deliver clear, trackable, and reliable results." },
             { icon: Compass, t: "Tailored Strategies", d: "Customized approaches to align with your unique financial goals and risk profile." },
           ].map((f, i) => (
-            <Reveal3D key={i} delay={i * 80} className="bg-background p-10 group hover:bg-muted/40 transition-colors duration-500">
+            <Reveal3D key={i} delay={i * 80} className="bg-background border border-border rounded-3xl p-8 group hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40">
               <f.icon className="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform duration-500" />
               <h3 className="font-display text-xl mb-3 font-semibold">{f.t}</h3>
               <p className="text-muted-foreground text-base leading-relaxed">{f.d}</p>
@@ -330,7 +317,9 @@ function Home() {
         <div className="mx-auto section-container relative z-10">
           <div className="text-center mb-12 lg:mb-16">
             <Reveal>
-              <span className="eyebrow text-accent mb-6 block">Investment Intelligence</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-6">
+                Investment Intelligence
+              </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-10 text-foreground">
                 Smart Investments - <span className="text-gradient-brand italic">Secure Growth</span>
               </h2>
@@ -373,7 +362,7 @@ function Home() {
                   { t: "Direct Expert Access", d: "Speak directly with professionals — no middle layers or automated responses." },
                 ].map((item, i) => (
                   <Reveal key={i} delay={i * 100}>
-                    <div className="h-full p-8 rounded-3xl bg-card border border-border hover:bg-muted/50 hover:border-accent/40 transition-all duration-500 group shadow-sm">
+                    <div className="h-full p-8 rounded-3xl bg-card border border-border hover:bg-background hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/40 hover:-translate-y-1 transition-all duration-500 group shadow-sm">
                       <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-500">
                         <span className="text-xs font-bold">0{i+1}</span>
                       </div>
@@ -468,7 +457,9 @@ function Home() {
         <div className="mx-auto section-container relative z-10">
           <div className="text-center mb-12 lg:mb-16">
             <Reveal>
-              <span className="eyebrow text-accent/80 mb-6 block">Strategic Collaboration</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/10 mb-6">
+                Strategic Collaboration
+              </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-8">
                 One Ecosystem, <span className="text-gradient-brand italic">Multiple Paths</span>
               </h2>
@@ -550,10 +541,12 @@ function Home() {
       </section>
 
       {/* PRESENCE */}
-      <section className="pt-12 lg:pt-16 pb-8 lg:pb-12 bg-muted/30">
+      <section className="pt-12 lg:pt-16 pb-8 lg:pb-12 bg-muted/30 border-t border-border">
         <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
           <Reveal>
-            <span className="eyebrow text-accent">Our Presence & Visibility</span>
+            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+              Our Presence & Visibility
+            </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Positioned Where Growth Happens</h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
               True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
@@ -586,14 +579,16 @@ function Home() {
   );
 }
 
-function Section({ eyebrow, title, children }: { eyebrow: string; title: React.ReactNode; children: React.ReactNode }) {
+function Section({ eyebrow, title, children, className }: { eyebrow: string; title: React.ReactNode; children: React.ReactNode; className?: string }) {
   return (
-    <section className="pt-24 lg:pt-32 pb-16 lg:pb-20">
+    <section className={`pt-24 lg:pt-32 pb-16 lg:pb-20 ${className || ''}`}>
       <div className="mx-auto section-container">
         <Reveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div>
-              <span className="eyebrow text-accent">{eyebrow}</span>
+              <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                {eyebrow}
+              </span>
               <h2 className="font-display text-3xl md:text-4xl xl:text-5xl mt-4 max-w-none leading-tight">{title}</h2>
             </div>
           </div>

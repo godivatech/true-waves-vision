@@ -65,17 +65,15 @@ export function Reveal3D({
   const variants = {
     hidden: {
       opacity: 0,
-      rotateX: 45,
-      y: 60,
-      z: -100,
+      scale: 0.95,
+      y: 30,
     },
     visible: {
       opacity: 1,
-      rotateX: 0,
+      scale: 1,
       y: 0,
-      z: 0,
       transition: {
-        duration: 1.2,
+        duration: 0.8,
         delay: delay / 1000,
         ease: [0.22, 1, 0.36, 1] as const,
       },
@@ -83,7 +81,7 @@ export function Reveal3D({
   };
 
   return (
-    <div style={{ perspective: "1200px" }} className={className}>
+    <div className={className}>
       <motion.div
         variants={variants}
         initial="hidden"
