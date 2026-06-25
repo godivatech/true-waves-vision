@@ -6,6 +6,7 @@ import { Reveal, Reveal3D } from "@/components/site/Reveal";
 import { Floating3DBackground } from "@/components/site/Floating3DBackground";
 import { useLenis } from "lenis/react";
 import cultureImg from "@/assets/section images/2.png";
+import hiringImg from "@/assets/section images/3.png";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -169,60 +170,85 @@ function Careers() {
         </div>
       </section>
 
-      <section id="apply" className="pt-12 lg:pt-16 pb-24 lg:pb-32 bg-muted/40 border-t border-border">
-        <div className="mx-auto max-w-3xl px-6 lg:px-10">
-          <Reveal>
-            <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
-              Apply Now
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl mt-4 mb-10 leading-[1.15]">Tell us about yourself</h2>
-          </Reveal>
-          {sent ? (
-            <div className="p-10 border border-accent rounded-2xl bg-card text-center">
-              <h3 className="font-display text-2xl mb-2">Application received</h3>
-              <p className="text-muted-foreground">Our team will review your profile and be in touch shortly.</p>
-            </div>
-          ) : (
-            <>
-              <p className="text-muted-foreground mb-8">
-                Simple. Direct. No unnecessary steps. Just send us your updated CV, a short note about yourself, and the role/division you're applying for.
-              </p>
-              <form
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                className="grid gap-5"
-              >
-                <Field label="Full Name" name="name" required />
-              <div className="grid md:grid-cols-2 gap-5">
-                <Field label="Phone" name="phone" type="tel" required />
-                <Field label="Email" name="email" type="email" required />
-              </div>
-              <Field
-                label="Position Applying For"
-                name="position"
-                required
-                value={selectedPosition}
-                onChange={(e) => setSelectedPosition(e.target.value)}
-              />
-              {/* Temporarily commented outed */}
-              {/* <div>
-                <label className="eyebrow block mb-2">Resume</label>
-                <input type="file" name="resume" accept=".pdf,.doc,.docx" className="block w-full text-base file:mr-4 file:py-3 file:px-5 file:rounded-sm file:border-0 file:bg-accent file:text-accent-foreground file:cursor-pointer hover:file:bg-ink hover:file:text-white transition" required />
-              </div> */}
-                <button type="submit" className="mt-4 inline-flex items-center justify-center gap-3 bg-gradient-brand text-ink px-8 py-4 rounded-full text-base font-medium shadow-brand hover:shadow-elegant transition-all duration-500 cursor-pointer">
-                  Submit Application <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-              <div className="mt-12 p-8 border border-border rounded-sm bg-muted/30 text-center">
-                <h3 className="font-display text-xl mb-4">How to Apply via Email</h3>
-                <p className="text-base text-muted-foreground mb-4">
-                  Send your CV and a short note to: <a href="mailto:careers@truewavesgroup.com" className="text-accent hover:underline font-semibold">careers@truewavesgroup.com</a>
-                </p>
-                <div className="text-sm font-mono bg-background p-3 rounded border border-border inline-block">
-                  Subject: [Your Name] — [Role] — [Division]
+      <section id="apply" className="pt-16 lg:pt-24 pb-24 lg:pb-32 bg-muted/40 border-t border-border">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Left side: The application form (7 Columns) */}
+            <div className="lg:col-span-7">
+              <Reveal>
+                <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
+                  Apply Now
+                </span>
+                <h2 className="font-display text-3xl md:text-4xl mt-4 mb-10 leading-[1.15]">Tell us about yourself</h2>
+              </Reveal>
+              {sent ? (
+                <div className="p-10 border border-accent rounded-2xl bg-card text-center">
+                  <h3 className="font-display text-2xl mb-2">Application received</h3>
+                  <p className="text-muted-foreground">Our team will review your profile and be in touch shortly.</p>
                 </div>
-              </div>
-            </>
-          )}
+              ) : (
+                <>
+                  <p className="text-muted-foreground mb-8 text-base">
+                    Simple. Direct. No unnecessary steps. Just send us your details, and the role/division you're applying for.
+                  </p>
+                  <form
+                    onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                    className="grid gap-5"
+                  >
+                    <Field label="Full Name" name="name" required />
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <Field label="Phone" name="phone" type="tel" required />
+                      <Field label="Email" name="email" type="email" required />
+                    </div>
+                    <Field
+                      label="Position Applying For"
+                      name="position"
+                      required
+                      value={selectedPosition}
+                      onChange={(e) => setSelectedPosition(e.target.value)}
+                    />
+                    <button type="submit" className="mt-4 inline-flex items-center justify-center gap-3 bg-gradient-brand text-ink px-8 py-4 rounded-full text-base font-medium shadow-brand hover:shadow-elegant transition-all duration-500 cursor-pointer">
+                      Submit Application <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </form>
+                  <div className="mt-12 p-8 border border-border rounded-xl bg-card text-center">
+                    <h3 className="font-display text-xl mb-4">How to Apply via Email</h3>
+                    <p className="text-base text-muted-foreground mb-4">
+                      Send your CV and a short note to: <a href="mailto:careers@truewavesgroup.com" className="text-accent hover:underline font-semibold">careers@truewavesgroup.com</a>
+                    </p>
+                    <div className="text-sm font-mono bg-muted p-3 rounded border border-border inline-block">
+                      Subject: [Your Name] — [Role] — [Division]
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Right side: We're Hiring Graphic (5 Columns) */}
+            <div className="lg:col-span-5 lg:sticky lg:top-28">
+              <Reveal delay={100}>
+                <div className="relative rounded-3xl overflow-hidden border border-border bg-card p-6 md:p-8 shadow-elegant flex flex-col justify-center items-center">
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-tr from-accent/5 to-muted/30 flex items-center justify-center border border-border/50">
+                    <img
+                      src={hiringImg}
+                      alt="We're Hiring illustration"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                  <div className="mt-8 text-center">
+                    <h3 className="font-display text-2xl font-bold mb-3 text-foreground">
+                      Join Our Team
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed max-w-sm mx-auto">
+                      We are always looking for passionate builders, thinkers, and innovators. Submit your details today to get started.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+          </div>
         </div>
       </section>
     </>
