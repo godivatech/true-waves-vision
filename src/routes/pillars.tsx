@@ -58,6 +58,118 @@ function Pillars() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const index = pillars.findIndex(p => p.id === hash);
+        if (index !== -1) {
+          setActiveIdx(index);
+        }
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
+
+  const renderPillarCard = (p: typeof pillars[number], i: number, isMobile: boolean) => {
+    const Icon = icons[i];
+    return (
+      <div
+        key={p.id}
+        id={p.id}
+        data-index={i}
+        ref={(el) => {
+          if (!isMobile) cardRefs.current[i] = el;
+        }}
+        onMouseEnter={() => {
+          if (!isMobile) setActiveIdx(i);
+        }}
+        className={`px-6 md:px-12 pt-16 pb-12 lg:py-32 border-b border-border/40 last:border-none flex flex-col justify-center transition-colors duration-500 ${
+          !isMobile && activeIdx === i ? "bg-muted/10" : ""
+        }`}
+      >
+        <Reveal>
+          <div className="block lg:hidden w-full aspect-[16/10] rounded-3xl overflow-hidden border border-border/80 shadow-md mb-8 relative mt-6">
+            <img
+              src={images[i]}
+              alt={p.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md border border-border/50 flex items-center justify-center font-display font-bold text-accent text-xs shadow-sm select-none">
+              0{i + 1}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent shrink-0">
+              <Icon className="w-5 h-5" />
+            </div>
+            <span className="text-xs font-bold tracking-wider text-accent uppercase bg-accent/5 px-3.5 py-1 border border-accent/15 rounded-full">
+              {p.tagline}
+            </span>
+          </div>
+
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+            {p.name}
+          </h2>
+
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 font-normal">
+            {p.description}
+          </p>
+
+          <div className="space-y-10">
+            {Object.entries(p).map(([key, value]) => {
+              if (Array.isArray(value)) {
+                const title = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                return (
+                  <div key={key} className="space-y-4">
+                    <h4 className="text-xs uppercase tracking-[0.15em] text-accent font-extrabold">{title}</h4>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {value.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-3 p-5 md:p-6 rounded-2xl bg-card border border-border/60 shadow-sm hover:border-accent/25 hover:shadow-md transition-all duration-300"
+                        >
+                          <div className="w-2 h-2 rounded-full bg-accent mt-2.5 shrink-0 shadow-[0_0_6px_rgba(var(--accent-rgb),0.4)]" />
+                          <span className="text-sm md:text-base font-semibold text-foreground/90 leading-relaxed">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+
+          <div className="flex flex-wrap gap-4 border-t border-border/40 pt-10 mt-10">
+            <Link
+              to="/contact"
+              className="btn-primary py-3.5 px-8 text-sm font-bold rounded-full shadow-lg"
+            >
+              Enquire Now
+            </Link>
+            {p.externalLink && (
+              <a
+                href={p.externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-accent/80 transition-colors py-3.5 px-7 rounded-full border border-accent/20 hover:bg-accent/5"
+              >
+                Visit Website <ArrowRight className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        </Reveal>
+      </div>
+    );
+  };
+
   return (
     <div className="bg-background selection:bg-accent selection:text-white min-h-screen">
       <Floating3DBackground />
@@ -133,99 +245,53 @@ function Pillars() {
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-7 bg-background">
-            {pillars.map((p, i) => {
-              const Icon = icons[i];
-              return (
-                <div
-                  key={p.id}
-                  id={p.id}
-                  data-index={i}
-                  ref={(el) => (cardRefs.current[i] = el)}
-                  onMouseEnter={() => setActiveIdx(i)}
-                  className={`px-6 md:px-12 py-20 lg:py-32 border-b border-border/40 last:border-none flex flex-col justify-center transition-colors duration-500 ${
-                    activeIdx === i ? "bg-muted/10" : ""
-                  }`}
-                >
-                  <Reveal>
-                    <div className="block lg:hidden w-full aspect-[16/10] rounded-3xl overflow-hidden border border-border/80 shadow-md mb-8 relative">
-                      <img
-                        src={images[i]}
-                        alt={p.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md border border-border/50 flex items-center justify-center font-display font-bold text-accent text-xs shadow-sm select-none">
-                        0{i + 1}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent shrink-0">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-xs font-bold tracking-wider text-accent uppercase bg-accent/5 px-3.5 py-1 border border-accent/15 rounded-full">
-                        {p.tagline}
-                      </span>
-                    </div>
-
-                    <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
-                      {p.name}
-                    </h2>
-
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-10 font-normal">
-                      {p.description}
-                    </p>
-
-                    <div className="space-y-10">
-                      {Object.entries(p).map(([key, value]) => {
-                        if (Array.isArray(value)) {
-                          const title = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-                          return (
-                            <div key={key} className="space-y-4">
-                              <h4 className="text-xs uppercase tracking-[0.15em] text-accent font-extrabold">{title}</h4>
-                              <div className="grid sm:grid-cols-2 gap-4">
-                                {value.map((item, idx) => (
-                                  <div
-                                    key={idx}
-                                    className="flex items-start gap-3 p-5 md:p-6 rounded-2xl bg-card border border-border/60 shadow-sm hover:border-accent/25 hover:shadow-md transition-all duration-300"
-                                  >
-                                    <div className="w-2 h-2 rounded-full bg-accent mt-2.5 shrink-0 shadow-[0_0_6px_rgba(var(--accent-rgb),0.4)]" />
-                                    <span className="text-sm md:text-base font-semibold text-foreground/90 leading-relaxed">
-                                      {item}
-                                    </span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          );
+          <div className="col-span-12 lg:col-span-7 bg-background min-w-0">
+            {/* Mobile View: Tab selector and single active card */}
+            <div className="block lg:hidden w-full overflow-hidden">
+              <div
+                id="mobile-tabs-scroll-target"
+                className="px-6 py-4 bg-background/95 backdrop-blur-md border-b border-border/40 sticky top-[96px] z-30 flex gap-2 overflow-x-auto scrollbar-none w-full shadow-sm"
+              >
+                {pillars.map((p, i) => (
+                  <button
+                    key={p.id}
+                    onClick={() => {
+                      setActiveIdx(i);
+                      setTimeout(() => {
+                        const contentElement = document.getElementById("pillars-content-mobile");
+                        if (contentElement) {
+                          const elementPosition = contentElement.getBoundingClientRect().top + window.scrollY;
+                          const offsetPosition = elementPosition - 164; // 96px header + 68px tab bar height
+                          window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                          });
                         }
-                        return null;
-                      })}
-                    </div>
+                      }, 100);
+                    }}
+                    className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase whitespace-nowrap border transition-all duration-300 ${
+                      activeIdx === i
+                        ? "bg-accent text-white border-accent shadow-md shadow-accent/15"
+                        : "bg-muted/50 border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {p.name.replace("True Waves ", "")}
+                  </button>
+                ))}
+              </div>
 
-                    <div className="flex flex-wrap gap-4 border-t border-border/40 pt-10 mt-10">
-                      <Link
-                        to="/contact"
-                        className="btn-primary py-3.5 px-8 text-sm font-bold rounded-full shadow-lg"
-                      >
-                        Enquire Now
-                      </Link>
-                      {p.externalLink && (
-                        <a
-                          href={p.externalLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-accent/80 transition-colors py-3.5 px-7 rounded-full border border-accent/20 hover:bg-accent/5"
-                        >
-                          Visit Website <ArrowRight className="w-4 h-4" />
-                        </a>
-                      )}
-                    </div>
-                  </Reveal>
-                </div>
-              );
-            })}
+              <div id="pillars-content-mobile" className="scroll-mt-[185px]">
+                {pillars.map((p, i) => {
+                  if (i !== activeIdx) return null;
+                  return renderPillarCard(p, i, true);
+                })}
+              </div>
+            </div>
+
+            {/* Desktop View: Traditional scroll-linked layout */}
+            <div className="hidden lg:block">
+              {pillars.map((p, i) => renderPillarCard(p, i, false))}
+            </div>
           </div>
         </div>
       </section>
