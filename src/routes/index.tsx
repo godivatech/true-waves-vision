@@ -559,7 +559,7 @@ function Home() {
                 Strategic Collaboration
               </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-8">
-                One Ecosystem, <span className="text-gradient-brand italic">Multiple Paths</span>
+                One Ecosystem, <span className="text-gradient-brand italic pr-2">Multiple Paths</span>
               </h2>
               <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed">
                 Whether you're entering the market or scaling your presence, we offer structured, high-value collaborations built on transparency.
@@ -645,7 +645,7 @@ function Home() {
             <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
               Our Presence & Visibility
             </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Positioned Where Growth Happens</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Our Presence Across South India</h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
               True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
             </p>
