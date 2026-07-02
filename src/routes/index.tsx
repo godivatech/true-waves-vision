@@ -1,8 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowRight, Building2, Shield, TrendingUp, Users, Sparkles, Globe2, Award, Compass, Mountain, HardHat, LineChart, Handshake } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ArrowRight, Building2, Shield, TrendingUp, Users, Sparkles, Globe2, Award, Compass, Mountain, HardHat, LineChart, Handshake, ShieldCheck, Landmark } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import heroImg from "@/assets/hero_premium.png";
+import heroSlide1 from "@/assets/hero section/1.png";
+import heroSlide2 from "@/assets/hero section/2.png";
 import residentialImg from "@/assets/project section images/resedential.png";
 import commercialImg from "@/assets/project section images/commercial.png";
 import infrastructureImg from "@/assets/project section images/infrastrucutre.png";
@@ -183,6 +185,15 @@ function InteractivePillarsSection() {
 
 function Home() {
   const { scrollYProgress } = useScroll();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [heroSlide1, heroSlide2];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // 5 second crossfade timer
+    return () => clearInterval(timer);
+  }, [slides.length]);
 
   // Hero Parallax & Scroll Effects
   const heroOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.8]);
@@ -191,62 +202,151 @@ function Home() {
     <>
       <Floating3DBackground />
       {/* HERO */}
-      <section className="relative min-h-screen flex items-end overflow-hidden bg-gradient-hero text-primary-foreground grain" style={{ perspective: "1500px" }}>
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#040813] text-white grain">
+        {/* Right Half: Full Brightness Parallax Image Slider */}
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="absolute inset-0"
+          className="absolute right-0 top-0 bottom-0 w-full h-full z-0 pointer-events-none"
         >
-          <img
-            src={heroImg}
-            alt="Ultra-premium modern corporate architectural facade at golden hour"
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
-            width={1920}
-            height={1080}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0A1128]/80 via-transparent to-transparent" />
+          <AnimatePresence>
+            <motion.img
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              src={slides[currentSlide]}
+              alt="Premium architectural presentation"
+              className="absolute inset-0 w-full h-full object-cover"
+              width={1920}
+              height={1080}
+            />
+          </AnimatePresence>
+          {/* Mobile-only overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#040813] via-[#040813]/70 to-[#040813]/20 lg:hidden" />
         </motion.div>
 
-        <div
-          className="relative mx-auto section-container pb-20 pt-40 w-full"
+        {/* Diagonal Sharp Rounded '<' SVG Mask */}
+        <svg
+          className="absolute inset-0 h-full w-full text-[#040813] fill-current pointer-events-none z-10 hidden lg:block"
+          viewBox="0 0 1000 1000"
+          preserveAspectRatio="none"
         >
-          <Reveal>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-12 bg-accent" />
-              <span className="eyebrow text-accent">Where Vision Becomes Velocity</span>
-            </div>
-          </Reveal>
-          <Reveal delay={150}>
-            <h1 className="font-display text-4xl md:text-6xl lg:text-[4.5rem] leading-[1.1] max-w-5xl text-balance font-semibold">
-              We Help You Invest <span className="text-gradient-brand">Smarter</span>,
-              <br />
-              Build Better and Grow Faster
-            </h1>
-          </Reveal>
-          <Reveal delay={300}>
-            <p className="mt-6 md:mt-8 max-w-2xl text-lg md:text-xl opacity-80 leading-relaxed">
-              South India's premier multi-sector group delivering excellence across real estate, valuation, and enterprise.
-            </p>
-          </Reveal>
-          <GSAPReveal delay={450}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/pillars" className="group btn-primary text-base tracking-wide shadow-brand hover:shadow-elegant">
-                Explore Our Group
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
-                className="inline-flex items-center gap-3 border border-primary-foreground/30 px-7 py-4 rounded-full text-base tracking-wide hover:bg-primary-foreground hover:text-accent transition-all duration-500 cursor-pointer"
-              >
-                Partner With Us
-              </button>
-            </div>
-          </GSAPReveal>
+          {/* Mathematically precise rounded inner corner mimicking the user's reference exactly */}
+          <path d="M 0 0 L 670 0 L 470 400 Q 420 500, 470 600 L 670 1000 L 0 1000 Z" />
+        </svg>
 
-          <div className="mt-20 hidden md:flex items-end gap-16 opacity-80">
-            <div><div className="font-display text-3xl font-semibold">05</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Pillars</div></div>
-            <div><div className="font-display text-3xl font-semibold">18+</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Years of expertise</div></div>
-            <div><div className="font-display text-3xl font-semibold">ISO 9001:2015</div><div className="text-sm tracking-widest uppercase opacity-60 mt-1">Certified</div></div>
+        {/* Faint Outlined Dot Grid Pattern (Isolated tightly to Bottom Left) */}
+        <div
+          className="absolute left-0 bottom-0 w-full lg:w-[40%] h-[45%] pointer-events-none z-10 hidden lg:block opacity-70"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' r='1.5' stroke='rgba(58,190,249,0.35)' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+            backgroundSize: "48px 48px",
+            backgroundPosition: "bottom left",
+            WebkitMaskImage: "radial-gradient(circle at bottom left, rgba(0,0,0,1) 0%, transparent 60%)",
+            maskImage: "radial-gradient(circle at bottom left, rgba(0,0,0,1) 0%, transparent 60%)"
+          }}
+        ></div>
+
+        {/* Content Container */}
+        <div className="relative mx-auto section-container w-full z-20 pt-36 pb-20 lg:py-0">
+          <div className="grid grid-cols-12 items-center min-h-[calc(100vh-140px)]">
+            <div className="col-span-12 lg:col-span-7 flex flex-col justify-center max-w-[40rem]">
+              {/* Eyebrow Label */}
+              <Reveal>
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="h-[2px] w-6 bg-accent" />
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">
+                    Where Vision Becomes Velocity
+                  </span>
+                </div>
+              </Reveal>
+
+              {/* Title */}
+              <Reveal delay={150}>
+                <h1 className="font-display text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.08] font-bold tracking-tight text-white mb-6">
+                  We Help You <br className="hidden md:inline" />
+                  Invest <span className="text-accent">Smarter</span>,<br />
+                  Build Better and <br />
+                  Grow Faster
+                </h1>
+              </Reveal>
+
+              {/* Description */}
+              <Reveal delay={300}>
+                <p className="max-w-[24rem] text-sm md:text-base text-slate-300 leading-relaxed mb-10">
+                  South India's premier multi-sector group delivering excellence across real estate, valuation, and enterprise.
+                </p>
+              </Reveal>
+
+              {/* CTAs */}
+              <GSAPReveal delay={450}>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    to="/pillars"
+                    className="group inline-flex items-center justify-center gap-3 px-7 py-3.5 bg-accent text-[#040813] font-bold rounded-lg shadow-[0_0_20px_rgba(58,190,249,0.25)] hover:opacity-95 transition-all duration-300 text-[13px] tracking-wide"
+                  >
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300" />
+                    <span>Explore Our Group</span>
+                  </Link>
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-consultation-modal"))}
+                    className="inline-flex items-center justify-center gap-3 border border-white/20 hover:border-white/40 px-7 py-3.5 rounded-lg text-white font-bold transition-all duration-300 cursor-pointer text-[13px] tracking-wide bg-transparent"
+                  >
+                    <span>Partner With Us</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </GSAPReveal>
+
+              {/* Stats Panel */}
+              <GSAPReveal delay={600}>
+                <div className="mt-14 p-5 md:px-8 md:py-6 relative rounded-[1.5rem] max-w-[46rem] flex flex-wrap md:flex-nowrap items-center justify-between gap-4 md:gap-8 overflow-hidden backdrop-blur-sm">
+                  {/* Subtle Border and Gradient matching target precisely */}
+                  <div className="absolute inset-0 rounded-[1.5rem] border border-white/5 bg-gradient-to-br from-white/[0.04] to-transparent pointer-events-none" />
+                  <div className="absolute left-0 top-0 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-[#3ABEF9]/40 to-transparent pointer-events-none" />
+                  
+                  {/* Pillar Stat */}
+                  <div className="relative flex items-center gap-4">
+                    <div className="text-accent">
+                      <Landmark className="w-8 h-8 stroke-[1.5]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-display text-[24px] md:text-[28px] font-bold text-white leading-none mb-1">05</span>
+                      <span className="text-[10px] tracking-[0.2em] text-slate-400 uppercase font-bold">Pillars</span>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="relative hidden md:block h-10 w-[1px] bg-slate-700/60" />
+
+                  {/* Expertise Stat */}
+                  <div className="flex items-center gap-4">
+                    <div className="text-accent">
+                      <Users className="w-8 h-8 stroke-[1.5]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-display text-[24px] md:text-[28px] font-bold text-white leading-none mb-1">18+</span>
+                      <span className="text-[10px] tracking-[0.2em] text-slate-400 uppercase font-bold whitespace-nowrap">Years of Expertise</span>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="hidden md:block h-10 w-[1px] bg-slate-700/60" />
+
+                  {/* ISO Certification Stat */}
+                  <div className="flex items-center gap-4">
+                    <div className="text-accent">
+                      <ShieldCheck className="w-8 h-8 stroke-[1.5]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-display text-sm md:text-base font-bold text-white leading-none mb-1">ISO 9001:2015</span>
+                      <span className="text-[10px] tracking-[0.2em] text-slate-400 uppercase font-bold whitespace-nowrap">Certified</span>
+                    </div>
+                  </div>
+                </div>
+              </GSAPReveal>
+            </div>
           </div>
         </div>
       </section>
