@@ -350,7 +350,7 @@ function Home() {
       </section>
 
       {/* STRENGTH IN NUMBERS */}
-      <Section eyebrow="Our Strength in Numbers" title="18+ Years of Proven Excellence Across South India" className="bg-background">
+      <Section eyebrow="Our Strength in Numbers" title="A Legacy of Proven Excellence Across South India" className="bg-background">
         <p className="-mt-8 mb-12 max-w-2xl text-muted-foreground leading-relaxed">
           Delivering reliable solutions since 2008 — built on trust, performance, and long-term relationships.
         </p>
