@@ -257,18 +257,16 @@ function Home() {
                 <div className="flex items-center gap-3 mb-8">
                   <span className="h-[2px] w-6 bg-accent" />
                   <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent">
-                    Where Vision Becomes Velocity
+                    Where Vision Becomes Reality
                   </span>
                 </div>
               </Reveal>
 
               {/* Title */}
               <Reveal delay={150}>
-                <h1 className="font-display text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.08] font-bold tracking-tight text-white mb-6">
-                  We Help You <br className="hidden md:inline" />
-                  Invest <span className="text-accent">Smarter</span>,<br />
-                  Build Better and <br />
-                  Grow Faster
+                <h1 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] font-bold tracking-tight text-white mb-6">
+                  We Help You Invest <span className="text-accent">Smarter</span>,<br className="hidden md:inline" />
+                  Build Better and Grow Faster
                 </h1>
               </Reveal>
 
