@@ -640,12 +640,12 @@ function Home() {
 
       {/* PRESENCE */}
       <section className="pt-12 lg:pt-16 pb-8 lg:pb-12 bg-muted/30 border-t border-border">
-        <div className="mx-auto section-container grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+        <div className="mx-auto section-container grid lg:grid-cols-[1.2fr_1fr] gap-16 lg:gap-16 items-center">
           <Reveal>
             <span className="inline-flex items-center px-4 py-1.5 border border-accent/20 rounded-full text-xs font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-4">
               Our Presence & Visibility
             </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl mt-4 font-semibold">Our Presence Across South India</h2>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-[2.2rem] xl:text-[2.6rem] mt-4 font-semibold whitespace-nowrap">Our Presence Across South India</h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-lg">
               True Waves Group operates at the intersection of opportunity and expansion—across South India’s most promising real estate and investment markets.
             </p>
