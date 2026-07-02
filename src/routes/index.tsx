@@ -65,7 +65,7 @@ function InteractivePillarsSection() {
           </div>
         </GSAPReveal>
 
-        <div className="flex flex-col lg:flex-row w-full h-[600px] lg:h-[450px] gap-3 lg:gap-4 overflow-hidden relative">
+        <div className="flex flex-col lg:flex-row w-full h-[650px] lg:h-[500px] gap-3 lg:gap-4 relative">
           {pillars.map((p, index) => {
             const Icon = pillarIcons[index] ?? Mountain;
             const isActive = activeIndex === index;
@@ -89,7 +89,7 @@ function InteractivePillarsSection() {
                   flex: isActive ? '8 1 0%' : '1 1 0%'
                 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-[#0A1128] border border-white/5 hover:border-white/10"
+                className="group relative flex flex-col justify-end overflow-hidden cursor-pointer rounded-3xl bg-[#0A1128] border border-white/5 hover:border-white/10 shadow-2xl"
                 style={{ willChange: "flex" }}
               >
                 {/* Background Image */}
@@ -105,23 +105,23 @@ function InteractivePillarsSection() {
 
                 {/* Active Background Gradient Overlay */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                  className={`absolute inset-0 bg-gradient-to-t from-[#040813] via-[#040813]/80 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-0'}`}
                 />
 
                 {/* Number indicator */}
-                <div className={`absolute top-6 left-6 font-display font-bold transition-all duration-700 ${isActive ? 'text-5xl text-white/10' : 'text-2xl text-white/5'} z-0`}>
+                <div className={`absolute top-6 left-6 font-display font-bold transition-all duration-700 ${isActive ? 'text-5xl text-white/20' : 'text-2xl text-white/5'} z-0`}>
                   0{index + 1}
                 </div>
 
-                <div className="relative z-10 p-5 lg:p-8 flex flex-col justify-end h-full w-full">
+                <div className="relative z-10 p-6 lg:p-10 flex flex-col justify-end h-full w-full">
 
                   {/* Label container */}
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-6">
                     <div className={`
-                      flex items-center justify-center rounded-2xl transition-all duration-700 shrink-0
-                      ${isActive ? 'w-14 h-14 bg-accent text-accent-foreground shadow-lg shadow-accent/20' : 'w-12 h-12 bg-white/5 text-white/40'}
+                      flex items-center justify-center transition-all duration-700 shrink-0
+                      ${isActive ? 'w-16 h-16 rounded-full border border-white/20 bg-transparent text-white' : 'w-12 h-12 rounded-2xl bg-white/5 border-transparent text-white/40'}
                     `}>
-                      <Icon className={isActive ? "w-7 h-7" : "w-6 h-6"} />
+                      <Icon className={isActive ? "w-6 h-6 stroke-[1.5]" : "w-6 h-6"} />
                     </div>
 
                     {/* Title Text wrapper */}
@@ -133,8 +133,8 @@ function InteractivePillarsSection() {
                           transform: isActive ? 'translateX(0)' : 'translateX(20px)'
                         }}
                       >
-                        <span className="eyebrow text-white/80 block mb-1 drop-shadow-sm">{p.tagline}</span>
-                        <h3 className="font-display text-2xl font-bold whitespace-nowrap">{p.name}</h3>
+                        <span className="eyebrow text-accent block mb-2 tracking-[0.2em] uppercase text-[0.65rem] font-semibold">{p.tagline}</span>
+                        <h3 className="font-display text-2xl lg:text-4xl font-light tracking-tight whitespace-nowrap">{p.name}</h3>
                       </div>
                     </div>
                   </div>
@@ -145,10 +145,10 @@ function InteractivePillarsSection() {
                     style={{
                       maxHeight: isActive ? '200px' : '0px',
                       opacity: isActive ? 1 : 0,
-                      marginTop: isActive ? '1rem' : '0'
+                      marginTop: isActive ? '1.5rem' : '0'
                     }}
                   >
-                    <p className="text-white/70 mb-6 leading-relaxed max-w-2xl line-clamp-3">
+                    <p className="text-slate-400 mb-8 leading-relaxed max-w-xl font-light text-lg">
                       {p.description}
                     </p>
                     {p.externalLink ? (
@@ -157,7 +157,7 @@ function InteractivePillarsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 text-accent font-medium hover:text-white transition-colors"
+                        className="inline-flex items-center gap-3 text-white hover:text-accent font-medium tracking-wide transition-colors uppercase text-sm border-b border-white/20 hover:border-accent pb-1"
                       >
                         Visit Website <ArrowRight className="w-4 h-4" />
                       </a>
@@ -166,7 +166,7 @@ function InteractivePillarsSection() {
                         to="/pillars"
                         hash={p.id}
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 text-accent font-medium hover:text-white transition-colors"
+                        className="inline-flex items-center gap-3 text-white hover:text-accent font-medium tracking-wide transition-colors uppercase text-sm border-b border-white/20 hover:border-accent pb-1"
                       >
                         Explore Details <ArrowRight className="w-4 h-4" />
                       </Link>
