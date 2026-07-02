@@ -56,19 +56,27 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-muted-foreground">
             <li className="flex gap-3 items-start">
               <MapPin className="w-4 h-4 mt-1 text-accent shrink-0" />
-              <span>
-                <strong className="text-foreground">Chennai:</strong> 17/13, Easwaran Koil St, West Mambalam, Chennai – 600033
-              </span>
+              <div className="space-y-1">
+                <div>
+                  <strong className="text-foreground">Chennai:</strong> 17/13, Easwaran Koil St, West Mambalam, Chennai – 600033
+                </div>
+                <a href="tel:04445837877" className="inline-flex items-center gap-2 hover:text-accent transition-colors group">
+                  <Phone className="w-3.5 h-3.5 text-accent group-hover:scale-110 transition-transform" />
+                  <span>044-45837877</span>
+                </a>
+              </div>
             </li>
             <li className="flex gap-3 items-start">
               <MapPin className="w-4 h-4 mt-1 text-accent shrink-0" />
-              <span>
-                <strong className="text-foreground">Madurai:</strong> No. 5, North St, Narimedu, Madurai – 625002
-              </span>
-            </li>
-            <li className="flex gap-3 items-center">
-              <Phone className="w-4 h-4 text-accent shrink-0" />
-              <span>044-45837877 | 0452 2535226</span>
+              <div className="space-y-1">
+                <div>
+                  <strong className="text-foreground">Madurai:</strong> No. 5, North St, Narimedu, Madurai – 625002
+                </div>
+                <a href="tel:04522535226" className="inline-flex items-center gap-2 hover:text-accent transition-colors group">
+                  <Phone className="w-3.5 h-3.5 text-accent group-hover:scale-110 transition-transform" />
+                  <span>0452 2535226</span>
+                </a>
+              </div>
             </li>
             <li className="flex gap-3 items-center">
               <Mail className="w-4 h-4 text-accent shrink-0" />

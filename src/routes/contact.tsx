@@ -51,14 +51,12 @@ function Contact() {
             </Reveal>
 
             {[
-              { icon: MapPin, t: "Chennai Office", d: "17/13, Easwaran Koil Street,\nVellai Thottam, West Mambalam,\nChennai – 600 033" },
-              { icon: Phone, t: "Chennai Phone", d: "044-45837877" },
-              { icon: MapPin, t: "Madurai Office", d: "No. 5, North Street,\nSingarayar Colony, Narimedu,\nMadurai – 625 002" },
-              { icon: Phone, t: "Madurai Phone", d: "0452 2535226" },
-              { icon: Mail, t: "General Enquiries", d: "info@truewavesgroup.com" },
-              { icon: Mail, t: "Investments", d: "invest@truewavesgroup.com" },
-              { icon: Mail, t: "Partnerships", d: "partners@truewavesgroup.com" },
-              { icon: Mail, t: "Careers", d: "careers@truewavesgroup.com" },
+              { icon: MapPin, t: "Chennai Office", d: "17/13, Easwaran Koil Street,\nVellai Thottam, West Mambalam,\nChennai – 600 033", phone: "044-45837877" },
+              { icon: MapPin, t: "Madurai Office", d: "No. 5, North Street,\nSingarayar Colony, Narimedu,\nMadurai – 625 002", phone: "0452 2535226" },
+              { icon: Mail, t: "General Enquiries", d: "info@truewavesgroup.com", email: "info@truewavesgroup.com" },
+              { icon: Mail, t: "Investments", d: "invest@truewavesgroup.com", email: "invest@truewavesgroup.com" },
+              { icon: Mail, t: "Partnerships", d: "partners@truewavesgroup.com", email: "partners@truewavesgroup.com" },
+              { icon: Mail, t: "Careers", d: "careers@truewavesgroup.com", email: "careers@truewavesgroup.com" },
             ].map((c, i) => (
               <Reveal3D key={i} delay={i * 60}>
                 <div className="flex gap-5 p-6 border border-border rounded-2xl bg-card hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 h-full">
@@ -67,7 +65,21 @@ function Contact() {
                     <div className="inline-flex items-center px-2 py-0.5 border border-accent/20 rounded-full text-[10px] font-semibold tracking-wider text-accent uppercase bg-accent/5 mb-2">
                       {c.t}
                     </div>
-                    <div className="text-foreground whitespace-pre-line leading-relaxed text-base">{c.d}</div>
+                    {c.email ? (
+                      <a href={`mailto:${c.email}`} className="block text-foreground whitespace-pre-line leading-relaxed text-base hover:text-accent transition-colors">
+                        {c.d}
+                      </a>
+                    ) : (
+                      <div className="text-foreground whitespace-pre-line leading-relaxed text-base">{c.d}</div>
+                    )}
+                    {c.phone && (
+                      <div className="mt-3 pt-3 border-t border-border/50">
+                        <a href={`tel:${c.phone.replace(/[\s-]/g, '')}`} className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-colors group">
+                          <Phone className="w-4 h-4 text-accent group-hover:scale-110 transition-transform" />
+                          <span className="font-medium text-sm">{c.phone}</span>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal3D>
