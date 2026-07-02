@@ -361,11 +361,12 @@ function Home() {
             { n: 50, s: "+", l: "Strategic Partners" },
             { n: 5, s: "", l: "Business Pillars" },
           ].map((m, i) => (
-            <GSAPReveal key={i} delay={i * 100} className="bg-background border border-border rounded-3xl p-8 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 hover:-translate-y-1">
-              <div className="font-display text-5xl md:text-6xl text-foreground font-semibold">
-                <GSAPCounter to={m.n} suffix={m.s} />
+            <GSAPReveal key={i} delay={i * 100} className="bg-white border border-slate-200/60 rounded-[1.5rem] p-8 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-1">
+              <div className="font-display text-5xl md:text-6xl text-slate-900 font-bold flex items-center pb-1">
+                <GSAPCounter to={m.n} />
+                <span className="text-accent">{m.s}</span>
               </div>
-              <div className="mt-3 text-base text-muted-foreground tracking-wide">{m.l}</div>
+              <div className="mt-3 text-sm text-slate-500 tracking-wide font-medium uppercase">{m.l}</div>
             </GSAPReveal>
           ))}
         </div>
