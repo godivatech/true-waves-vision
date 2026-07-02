@@ -492,7 +492,7 @@ function Home() {
       </section>
 
       {/* PROJECTS */}
-      <Section eyebrow="Our Projects & Expertise" title="A Portfolio That Reflects Scale, Diversity & Execution">
+      <Section eyebrow="Our Projects & Expertise" title="Proven Success Across Every Sector">
         <p className="-mt-8 mb-12 max-w-2xl text-muted-foreground leading-relaxed">
           We don’t operate in one segment—we deliver across multiple sectors, ensuring diversified expertise and proven execution.
         </p>
